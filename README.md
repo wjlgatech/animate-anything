@@ -205,7 +205,7 @@ This repo is built to be **consumed by agents**, not just read by humans:
 
 - **`knowledge/graph.json`** — point a RAG pipeline or agent at it to answer *"what should I use to animate X?"* grounded in real nodes.
 - **`llms.txt`** — a flat, token-cheap index (name · use-case · license · repo) for quick tool selection.
-- **Catalog it into [`anyagent`](https://github.com/wjlgatech/anyagent):** several entries here (Hyperframes, `/watch`, Emil Kowalski's pack) are installable **skill libraries** — `anyagent skills sync <clone> --source … && anyagent skills find "animate a hero section"` surfaces the right one, **trust-graded** (safety class + license + relevance), never a popularity guess.
+- **Catalog it into `anyagent`:** several entries here (Hyperframes, `/watch`, Emil Kowalski's pack) are installable **skill libraries** — `anyagent skills sync <clone> --source … && anyagent skills find "animate a hero section"` surfaces the right one, **trust-graded** (safety class + license + relevance), never a popularity guess.
 - **Emit the composition, not the render** — the pattern this whole field rewards: author animation as *self-contained web code* (HTML/CSS/GSAP), then render to MP4 **locally** (Hyperframes / headless-Chrome+FFmpeg) only if you need a shareable file. No paid cloud video API required for launch-video-grade motion.
 
 ---
