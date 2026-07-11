@@ -1,0 +1,5 @@
+# Manim render artifacts — regenerate with `manim …`, never commit
+media/
+__pycache__/
+*.pyc
+.manim_cache/
