@@ -179,6 +179,28 @@ Popularity is *one* input, never the whole verdict — a well-maintained MIT lib
 
 ## 🤖 Tooling — for agents
 
+### ⭐ `/animate-anything` — a concept → a 3Blue1Brown-style explainer
+
+The flagship tool: point it at an idea, get back a **real ManimCommunity scene** authored in Grant
+Sanderson's **reverse-engineered style**, style-gated, and rendered to MP4 — **locally, no cloud video
+API**. Built by reverse-engineering his toolchain (Manim) and production style (palette, choreography,
+pacing) from `3b1b/videos` + `manimlib`. See [`skills/animate-anything/`](skills/animate-anything/SKILL.md).
+
+```bash
+pip install manim                                             # + ffmpeg (LaTeX only for MathTex)
+python3 scripts/animate.py scaffold "eigenvectors" --out scene.py   # concept → 5-beat 3b1b skeleton
+python3 scripts/animate.py lint scene.py --gate 80                  # computed 0–100 style score (CI-gateable)
+manim -qh scene.py EigenvectorsScene                               # render locally
+```
+
+It encodes a **style contract** the linter enforces — the `#333333` warm-grey canvas (never pure
+black), role-based palette (blue=given · yellow=focus · red=tension · green=resolved), *morph-to-show-
+equivalence* (`Transform`, never `FadeOut→FadeIn`), and play→wait pacing. Golden reference (renders
+without LaTeX, scores 100/100): [`examples/odd_squares.py`](examples/odd_squares.py). **Emit the
+composition, render locally** — same principle as the video-as-code row above.
+
+### The rest of the substrate
+
 This repo is built to be **consumed by agents**, not just read by humans:
 
 - **`knowledge/graph.json`** — point a RAG pipeline or agent at it to answer *"what should I use to animate X?"* grounded in real nodes.
