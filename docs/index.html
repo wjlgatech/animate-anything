@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Awesome Animation — living knowledge graph</title>
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+body{background:#0b0c10;color:#e6e6ea;font:14px/1.45 -apple-system,Inter,system-ui;overflow:hidden}
+#c{position:fixed;inset:0;cursor:grab}
+#hud{position:fixed;top:0;left:0;right:0;display:flex;gap:10px;align-items:center;
+  padding:10px 14px;pointer-events:none;background:linear-gradient(#0b0c10ee,#0b0c1000)}
+#hud>*{pointer-events:auto}
+#hud h1{font-size:15px;font-weight:600;white-space:nowrap}
+#hud .meta{color:#8b8b96;font-size:12px;white-space:nowrap}
+#q{background:#16171d;border:1px solid #2a2b33;border-radius:8px;color:#e6e6ea;
+  padding:6px 10px;width:220px;outline:none}
+#legend{position:fixed;bottom:12px;left:14px;display:flex;flex-wrap:wrap;gap:6px}
+#legend button{background:#16171d;border:1px solid #2a2b33;border-radius:99px;color:#cfcfd6;
+  padding:3px 10px;font-size:12px;cursor:pointer;display:flex;gap:6px;align-items:center}
+#legend button.off{opacity:.35}
+#legend i{width:9px;height:9px;border-radius:99px;display:inline-block}
+#panel{position:fixed;top:54px;right:12px;width:330px;max-height:calc(100vh - 80px);
+  overflow:auto;background:#13141af2;border:1px solid #2a2b33;border-radius:12px;
+  padding:14px;display:none}
+#panel h2{font-size:15px;margin-bottom:2px}
+#panel .ty{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8b8b96}
+#panel .sec{margin-top:10px;font-size:13px;color:#c9c9d2}
+#panel a{color:#7ab8ff;text-decoration:none;word-break:break-all}
+#panel .edge{padding:3px 0;border-top:1px solid #22232b;font-size:12.5px;cursor:pointer}
+#panel .edge i{color:#8b8b96;font-style:normal}
+#panel .x{float:right;cursor:pointer;color:#8b8b96}
+#askbtn{background:#2b3a55;border:1px solid #3d5078;border-radius:8px;color:#cfe0ff;
+  padding:6px 12px;cursor:pointer;font-size:13px;white-space:nowrap}
+#ask{position:fixed;right:12px;bottom:12px;width:360px;max-height:min(540px,calc(100vh - 90px));
+  display:none;flex-direction:column;background:#101117f6;border:1px solid #2a2b33;
+  border-radius:14px;overflow:hidden;z-index:5}
+#ask header{display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid #22232b}
+#ask header b{font-size:13px;flex:1}
+#ask header .x{cursor:pointer;color:#8b8b96}
+#ask select{background:#16171d;border:1px solid #2a2b33;border-radius:6px;color:#cfcfd6;
+  font-size:11px;padding:3px 4px;max-width:150px}
+#msgs{flex:1;overflow:auto;padding:10px 12px;display:flex;flex-direction:column;gap:8px;min-height:120px}
+#msgs .m{border-radius:10px;padding:7px 10px;font-size:13px;line-height:1.45;white-space:pre-wrap;word-break:break-word}
+#msgs .user{background:#2b3a55;align-self:flex-end;max-width:85%}
+#msgs .bot{background:#191a21;border:1px solid #25262e;align-self:flex-start;max-width:95%}
+#msgs .err{background:#3a1d1d;border:1px solid #5c2b2b}
+#msgs .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+#msgs .chip{background:#16202e;border:1px solid #2c3d57;border-radius:99px;color:#9ec3f5;
+  padding:2px 9px;font-size:11px;cursor:pointer}
+#askform{display:flex;gap:6px;padding:10px 12px;border-top:1px solid #22232b}
+#askform input{flex:1;background:#16171d;border:1px solid #2a2b33;border-radius:8px;
+  color:#e6e6ea;padding:7px 10px;outline:none;font-size:13px}
+#askform button{background:#2b3a55;border:1px solid #3d5078;border-radius:8px;color:#cfe0ff;
+  padding:7px 12px;cursor:pointer}
+#keyrow{padding:12px;border-top:1px solid #22232b;font-size:12.5px;color:#c9c9d2}
+#keyrow input{width:100%;margin:8px 0 6px;background:#16171d;border:1px solid #2a2b33;
+  border-radius:8px;color:#e6e6ea;padding:7px 10px;outline:none;box-sizing:border-box}
+#keyrow a{color:#7ab8ff}
+#keyrow button{background:#2b3a55;border:1px solid #3d5078;border-radius:8px;color:#cfe0ff;
+  padding:6px 12px;cursor:pointer}
+#keyrow .note{color:#8b8b96;font-size:11.5px;margin-top:6px}
+@media(max-width:640px){#panel{left:12px;width:auto}#q{width:110px}
+  #ask{left:12px;width:auto;max-height:60vh}}
+</style></head><body>
+<canvas id="c"></canvas>
+<div id="hud"><h1>Awesome Animation</h1><span class="meta" id="meta"></span>
+<input id="q" placeholder="search nodes…" autocomplete="off">
+<button id="askbtn">✨ Ask the field</button></div>
+<div id="legend"></div>
+<div id="panel"></div>
+<div id="ask">
+  <header><b>✨ Ask the field</b>
+    <select id="model">
+      <option value="deepseek-ai/deepseek-v4-flash">DeepSeek v4 · fast</option>
+      <option value="z-ai/glm-5.1">GLM 5.1 · flagship (slow queue)</option>
+      <option value="moonshotai/kimi-k2.6">Kimi K2.6 · agentic</option>
+    </select>
+    <span class="x" id="keygear" title="change API key">⚙</span>
+    <span class="x" id="askclose">✕</span></header>
+  <div id="msgs"></div>
+  <div id="keyrow" style="display:none">
+    Answers are generated by a frontier model on <b>NVIDIA's free API</b>, grounded in this
+    graph. Get a free key at <a href="https://build.nvidia.com/models" target="_blank">build.nvidia.com/models</a>
+    (register → copy the <i>nvapi-…</i> key):
+    <input id="keyin" type="password" placeholder="nvapi-…" autocomplete="off">
+    <button id="keysave">Save key</button>
+    <div class="note">Stored only in this browser (localStorage). Sent only to NVIDIA via a
+    keyless CORS bridge (<a href="https://github.com/wjlgatech/sos/tree/main/plugins/sos/skills/free-llm/nim-bridge" target="_blank">source</a>).
+    Free tier: ~40 req/min.</div>
+  </div>
+  <form id="askform"><input id="askq" placeholder="e.g. how does DGM relate to ADAS?" autocomplete="off"><button>Ask</button></form>
+</div>
+<script>
+const G={"subject": "Awesome Animation", "stats": {"nodes": 81, "edges": 80, "node_types": {"category": 9, "item": 13, "repo": 59}, "edge_types": {"part_of": 73, "builds_on": 7}}, "nodes": [{"id": "category:learn-the-map", "type": "category", "name": "🧭 Learn — the map", "links": [], "confidence": 0.6}, {"id": "item:css-declarative", "type": "item", "name": "CSS / declarative", "links": [], "confidence": 0.6, "category": "🧭 Learn — the map"}, {"id": "item:js-timeline-tween", "type": "item", "name": "JS timeline / tween", "links": [], "confidence": 0.6, "category": "🧭 Learn — the map"}, {"id": "item:ui-framework-motion", "type": "item", "name": "UI-framework motion", "links": [], "confidence": 0.6, "category": "🧭 Learn — the map"}, {"id": "item:vector-runtime", "type": "item", "name": "Vector runtime", "links": [], "confidence": 0.6, "category": "🧭 Learn — the map"}, {"id": "item:3d-webgl-shader", "type": "item", "name": "3D / WebGL / shader", "links": [], "confidence": 0.6, "category": "🧭 Learn — the map"}, {"id": "item:video-as-code", "type": "item", "name": "Video-as-code", "links": [], "confidence": 0.6, "category": "🧭 Learn — the map"}, {"id": "item:ai-agent-authored", "type": "item", "name": "AI / agent-authored", "links": [], "confidence": 0.6, "category": "🧭 Learn — the map"}, {"id": "category:how-we-rank", "type": "category", "name": "How we rank", "links": [], "confidence": 0.6}, {"id": "item:adoption", "type": "item", "name": "Adoption", "links": [], "confidence": 0.6, "category": "How we rank"}, {"id": "item:performance", "type": "item", "name": "Performance", "links": [], "confidence": 0.6, "category": "How we rank"}, {"id": "item:learning-curve", "type": "item", "name": "Learning curve", "links": [], "confidence": 0.6, "category": "How we rank"}, {"id": "item:license-openness", "type": "item", "name": "License openness", "links": [], "confidence": 0.6, "category": "How we rank"}, {"id": "item:agent-authorability", "type": "item", "name": "Agent-authorability", "links": [], "confidence": 0.6, "category": "How we rank"}, {"id": "item:maintenance-health", "type": "item", "name": "Maintenance health", "links": [], "confidence": 0.6, "category": "How we rank"}, {"id": "category:web-js-animation-timeline-tween-ui-motion", "type": "category", "name": "🌊 Web / JS animation — timeline, tween & UI motion", "links": [], "confidence": 0.6}, {"id": "repo:gsap", "type": "repo", "name": "GSAP", "summary": "The pro timeline engine — scroll, SVG, precise sequencing. Now 100% free incl. all plugins (2025). Reach for orchestrated, exact motion.", "stars": 26000, "links": ["https://github.com/greensock/GSAP"], "confidence": 0.97, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:motion", "type": "repo", "name": "Motion", "summary": "Formerly Framer Motion — spring/layout/gesture animation for React & JS. The default for app UIs.", "stars": 33000, "links": ["https://github.com/motiondivision/motion"], "confidence": 0.98, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:anime-js", "type": "repo", "name": "Anime.js", "summary": "Lightweight, expressive timeline for DOM/SVG/JS objects (v4, 2025).", "stars": 71000, "links": ["https://github.com/juliangarnier/anime"], "confidence": 1.0, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:lenis", "type": "repo", "name": "Lenis", "summary": "Smooth-scroll foundation that scroll-driven motion is built on.", "stars": 14000, "links": ["https://github.com/darkroomengineering/lenis"], "confidence": 0.94, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:react-spring", "type": "repo", "name": "React Spring", "summary": "Spring-physics animation for React.", "stars": 29000, "links": ["https://github.com/pmndrs/react-spring"], "confidence": 0.97, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:autoanimate", "type": "repo", "name": "AutoAnimate", "summary": "One line → automatic add/remove/move transitions. Zero-config delight.", "stars": 14000, "links": ["https://github.com/formkit/auto-animate"], "confidence": 0.94, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:tween-js", "type": "repo", "name": "Tween.js", "summary": "Minimal tweening primitive, often paired with Three.js.", "stars": 10000, "links": ["https://github.com/tweenjs/tween.js"], "confidence": 0.93, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:motion-one", "type": "repo", "name": "Motion One", "summary": "Tiny (~2kb) WAAPI-based animator.", "stars": 3000, "links": ["https://github.com/motiondivision/motionone"], "confidence": 0.87, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:theatre-js", "type": "repo", "name": "Theatre.js", "summary": "Visual sequence editor for JS & 3D.", "stars": 12000, "links": ["https://github.com/theatre-js/theatre"], "confidence": 0.93, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:mo-js", "type": "repo", "name": "Mo.js", "summary": "Motion-graphics toolkit for the web.", "stars": 19000, "links": ["https://github.com/mojs/mojs"], "confidence": 0.96, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:popmotion", "type": "repo", "name": "Popmotion", "summary": "Being absorbed into Motion — prefer Motion.", "stars": 20000, "links": ["https://github.com/Popmotion/popmotion"], "confidence": 0.96, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "repo:velocity-js", "type": "repo", "name": "Velocity.js", "summary": "Historic jQuery-era animator, unmaintained since 2020.", "stars": 17000, "links": ["https://github.com/julianshapiro/velocity"], "confidence": 0.95, "category": "🌊 Web / JS animation — timeline, tween & UI motion"}, {"id": "category:css-utility-component-motion", "type": "category", "name": "🎨 CSS / utility & component motion", "links": [], "confidence": 0.6}, {"id": "repo:sonner", "type": "repo", "name": "Sonner", "summary": "Emil Kowalski's toast — the craft reference (13M+ weekly npm).", "stars": 13000, "links": ["https://github.com/emilkowalski/sonner"], "confidence": 0.94, "category": "🎨 CSS / utility & component motion"}, {"id": "repo:vaul", "type": "repo", "name": "Vaul", "summary": "Emil Kowalski's drawer — physics-y, accessible.", "stars": 8, "links": ["https://github.com/emilkowalski/vaul"], "confidence": 0.6, "category": "🎨 CSS / utility & component motion"}, {"id": "repo:magic-ui", "type": "repo", "name": "Magic UI", "summary": "Animated React/Tailwind components, shadcn-style registry.", "stars": 21000, "links": ["https://github.com/magicuidesign/magicui"], "confidence": 0.96, "category": "🎨 CSS / utility & component motion"}, {"id": "repo:aceternity-ui", "type": "repo", "name": "Aceternity UI", "summary": "Copy-paste flashy animated sections.", "links": ["https://ui.aceternity.com"], "confidence": 0.6, "category": "🎨 CSS / utility & component motion"}, {"id": "repo:tw-animate-css", "type": "repo", "name": "tw-animate-css", "summary": "Tailwind v4 animation utilities — the current shadcn default.", "stars": 780, "links": ["https://github.com/Wombosvideo/tw-animate-css"], "confidence": 0.81, "category": "🎨 CSS / utility & component motion"}, {"id": "repo:animate-css", "type": "repo", "name": "Animate.css", "summary": "Drop-in CSS keyframe classes. Note the non-standard license.", "stars": 83000, "links": ["https://github.com/animate-css/animate.css"], "confidence": 1.0, "category": "🎨 CSS / utility & component motion"}, {"id": "repo:animations-dev", "type": "repo", "name": "animations.dev", "summary": "Emil Kowalski's animation course — the craft curriculum.", "links": ["https://animations.dev"], "confidence": 0.6, "category": "🎨 CSS / utility & component motion"}, {"id": "repo:tailwindcss-animate", "type": "repo", "name": "tailwindcss-animate", "summary": "v3-era; superseded by tw-animate-css.", "stars": 3000, "links": ["https://github.com/jamiebuilds/tailwindcss-animate"], "confidence": 0.87, "category": "🎨 CSS / utility & component motion"}, {"id": "repo:aos", "type": "repo", "name": "AOS", "summary": "Animate-on-scroll, low maintenance.", "stars": 28000, "links": ["https://github.com/michalsnik/aos"], "confidence": 0.97, "category": "🎨 CSS / utility & component motion"}, {"id": "category:lottie-vector-runtimes-designer-authored-motion", "type": "category", "name": "🪁 Lottie / vector runtimes — designer-authored motion", "links": [], "confidence": 0.6}, {"id": "repo:lottie-lottie-web", "type": "repo", "name": "Lottie (lottie-web)", "summary": "Play After-Effects vector animations as JSON on the web. The foundation (aging).", "stars": 32000, "links": ["https://github.com/airbnb/lottie-web"], "confidence": 0.98, "category": "🪁 Lottie / vector runtimes — designer-authored motion"}, {"id": "repo:rive", "type": "repo", "name": "Rive", "summary": "Interactive, state-machine vector animation — small, real-time, input-driven.", "stars": 1000, "links": ["https://github.com/rive-app/rive-runtime"], "confidence": 0.82, "category": "🪁 Lottie / vector runtimes — designer-authored motion"}, {"id": "repo:dotlottie", "type": "repo", "name": "dotLottie", "summary": "The modern Lottie player/format (compressed, themable).", "stars": 800, "links": ["https://github.com/LottieFiles/dotlottie-web"], "confidence": 0.81, "category": "🪁 Lottie / vector runtimes — designer-authored motion"}, {"id": "repo:lottie-react-native", "type": "repo", "name": "lottie-react-native", "summary": "Lottie for React Native.", "stars": 17000, "links": ["https://github.com/lottie-react-native/lottie-react-native"], "confidence": 0.95, "category": "🪁 Lottie / vector runtimes — designer-authored motion"}, {"id": "repo:lottiefiles", "type": "repo", "name": "LottieFiles", "summary": "The vector-animation ecosystem — marketplace, tools, players, MCP.", "links": ["https://lottiefiles.com"], "confidence": 0.6, "category": "🪁 Lottie / vector runtimes — designer-authored motion"}, {"id": "repo:svgator", "type": "repo", "name": "SVGator", "summary": "No-code SVG animation editor.", "links": ["https://svgator.com"], "confidence": 0.6, "category": "🪁 Lottie / vector runtimes — designer-authored motion"}, {"id": "category:3d-webgl-shaders-immersive-generative-motion", "type": "category", "name": "3D / WebGL / shaders — immersive & generative motion", "links": [], "confidence": 0.6}, {"id": "repo:three-js", "type": "repo", "name": "Three.js", "summary": "The WebGL 3D standard.", "stars": 114000, "links": ["https://github.com/mrdoob/three.js"], "confidence": 1.0, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:pixijs", "type": "repo", "name": "PixiJS", "summary": "Fast 2D WebGL renderer for effects & particles.", "stars": 48000, "links": ["https://github.com/pixijs/pixijs"], "confidence": 1.0, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:react-three-fiber", "type": "repo", "name": "React Three Fiber", "summary": "Three.js as declarative React components.", "stars": 31000, "links": ["https://github.com/pmndrs/react-three-fiber"], "confidence": 0.98, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:babylon-js", "type": "repo", "name": "Babylon.js", "summary": "Full-featured 3D engine (games, XR).", "stars": 26000, "links": ["https://github.com/BabylonJS/Babylon.js"], "confidence": 0.97, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:drei", "type": "repo", "name": "drei", "summary": "R3F helpers — the batteries for react-three-fiber.", "stars": 9, "links": ["https://github.com/pmndrs/drei"], "confidence": 0.61, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:playcanvas", "type": "repo", "name": "PlayCanvas", "summary": "3D engine with a cloud editor.", "stars": 16000, "links": ["https://github.com/playcanvas/engine"], "confidence": 0.95, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:p5-js", "type": "repo", "name": "p5.js", "summary": "Creative-coding for generative/ambient motion.", "stars": 24000, "links": ["https://github.com/processing/p5.js"], "confidence": 0.97, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:spline", "type": "repo", "name": "Spline", "summary": "No-code 3D design & animation, exportable to web.", "links": ["https://spline.design"], "confidence": 0.6, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:ogl", "type": "repo", "name": "OGL", "summary": "Minimal WebGL when Three.js is too heavy.", "stars": 4, "links": ["https://github.com/oframe/ogl"], "confidence": 0.57, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:shadertoy", "type": "repo", "name": "Shadertoy", "summary": "The fragment-shader learning & sharing hub (not a dependency).", "links": ["https://www.shadertoy.com"], "confidence": 0.6, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "repo:zdog", "type": "repo", "name": "Zdog", "summary": "Pseudo-3D round vector illustrations (dormant).", "stars": 10, "links": ["https://github.com/metafizzy/zdog"], "confidence": 0.61, "category": "3D / WebGL / shaders — immersive & generative motion"}, {"id": "category:video-as-code-a-composition-rendered-to-frames", "type": "category", "name": "🎞 Video-as-code — a composition rendered to frames", "links": [], "confidence": 0.6}, {"id": "repo:heygen-hyperframes", "type": "repo", "name": "HeyGen Hyperframes", "summary": "Agent-native: author HTML/CSS/GSAP, render MP4 locally (headless-Chrome+FFmpeg), deterministic. The center of \"video as code for agents.\"", "stars": 34000, "links": ["https://github.com/heygen-com/hyperframes"], "confidence": 0.98, "category": "🎞 Video-as-code — a composition rendered to frames"}, {"id": "repo:remotion", "type": "repo", "name": "Remotion", "summary": "Make videos in React — data-driven, programmatic MP4. Note the tiered commercial license.", "stars": 53000, "links": ["https://github.com/remotion-dev/remotion"], "confidence": 1.0, "category": "🎞 Video-as-code — a composition rendered to frames"}, {"id": "repo:motion-canvas", "type": "repo", "name": "Motion Canvas", "summary": "Code-driven vector animation with a visual editor — great for explainers.", "stars": 19000, "links": ["https://github.com/motion-canvas/motion-canvas"], "confidence": 0.96, "category": "🎞 Video-as-code — a composition rendered to frames"}, {"id": "repo:revideo", "type": "repo", "name": "Revideo", "summary": "Programmatic video built on Motion Canvas, API-first.", "stars": 3, "links": ["https://github.com/redotvideo/revideo"], "confidence": 0.56, "category": "🎞 Video-as-code — a composition rendered to frames"}, {"id": "repo:editly", "type": "repo", "name": "Editly", "summary": "Declarative FFmpeg video editing from a spec.", "stars": 5, "links": ["https://github.com/mifi/editly"], "confidence": 0.58, "category": "🎞 Video-as-code — a composition rendered to frames"}, {"id": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit", "type": "category", "name": "AI / agent-authored animation — a prompt or reference → a composition", "links": [], "confidence": 0.6}, {"id": "repo:manim-community", "type": "repo", "name": "Manim (Community)", "summary": "The most LLM-authorable animator — Python `Scene` classes, huge training footprint. Ideal for agent-generated explainers.", "stars": 39000, "links": ["https://github.com/ManimCommunity/manim"], "confidence": 0.99, "category": "AI / agent-authored animation — a prompt or reference → a composition"}, {"id": "repo:remotion-agent-skills", "type": "repo", "name": "Remotion Agent Skills", "summary": "Official Agent Skills (Jan 2026) for Claude Code/Cursor — agents author React video.", "stars": 53000, "links": ["https://github.com/remotion-dev/remotion"], "confidence": 1.0, "category": "AI / agent-authored animation — a prompt or reference → a composition"}, {"id": "repo:claude-design-artifacts", "type": "repo", "name": "Claude Design / Artifacts", "summary": "The mainstream path for an LLM to author self-contained animated HTML/CSS/JS.", "links": ["https://claude.ai"], "confidence": 0.6, "category": "AI / agent-authored animation — a prompt or reference → a composition"}, {"id": "repo:lottie-creator-mcp", "type": "repo", "name": "Lottie Creator MCP", "summary": "LottieFiles' MCP — the most production-credible agent path to vector animation.", "links": ["https://lottiefiles.com"], "confidence": 0.6, "category": "AI / agent-authored animation — a prompt or reference → a composition"}, {"id": "repo:css-animation-skill", "type": "repo", "name": "css-animation-skill", "summary": "A Claude Code skill that teaches an agent CSS-animation craft.", "links": ["https://github.com/neonwatty/css-animation-skill"], "confidence": 0.6, "category": "AI / agent-authored animation — a prompt or reference → a composition"}, {"id": "repo:claude-video-watch", "type": "repo", "name": "claude-video `/watch`", "summary": "Lets an agent watch a reference video (yt-dlp + FFmpeg + Whisper). Comprehension, not authoring — the \"study a reference\" half of the loop.", "stars": 7, "links": ["https://github.com/bradautomates/claude-video"], "confidence": 0.6, "category": "AI / agent-authored animation — a prompt or reference → a composition"}, {"id": "category:commercial-generative-video-proprietary-saas", "type": "category", "name": "🎥 Commercial generative video (proprietary SaaS)", "links": [], "confidence": 0.6}, {"id": "repo:runway", "type": "repo", "name": "Runway", "summary": "Production text/image→video suite (Gen-4).", "links": ["https://runwayml.com"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}, {"id": "repo:openai-sora-2", "type": "repo", "name": "OpenAI Sora 2", "summary": "Frontier-quality generative video.", "links": ["https://openai.com/sora"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}, {"id": "repo:google-veo-3-1", "type": "repo", "name": "Google Veo 3.1", "summary": "4K generation with lip-sync.", "links": ["https://deepmind.google/models/veo"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}, {"id": "repo:kling-3-0", "type": "repo", "name": "Kling 3.0", "summary": "Best price/quality generative video.", "links": ["https://klingai.com"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}, {"id": "repo:heygen", "type": "repo", "name": "HeyGen", "summary": "AI-avatar spokesperson video.", "links": ["https://heygen.com"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}, {"id": "repo:synthesia", "type": "repo", "name": "Synthesia", "summary": "Enterprise avatar video.", "links": ["https://synthesia.io"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}, {"id": "repo:pika", "type": "repo", "name": "Pika", "summary": "Fast, playful generative video.", "links": ["https://pika.art"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}, {"id": "repo:luma-dream-machine", "type": "repo", "name": "Luma Dream Machine", "summary": "Text/image→video.", "links": ["https://lumalabs.ai"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}, {"id": "repo:jitter", "type": "repo", "name": "Jitter", "summary": "Motion-design tool (not AI-gen) — quick branded animation.", "links": ["https://jitter.video"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}, {"id": "repo:adobe-after-effects", "type": "repo", "name": "Adobe After Effects", "summary": "The professional motion-graphics incumbent.", "links": ["https://www.adobe.com/products/aftereffects.html"], "confidence": 0.6, "category": "🎥 Commercial generative video (proprietary SaaS)"}], "edges": [{"src": "item:css-declarative", "dst": "category:learn-the-map", "type": "part_of"}, {"src": "item:js-timeline-tween", "dst": "category:learn-the-map", "type": "part_of"}, {"src": "item:ui-framework-motion", "dst": "category:learn-the-map", "type": "part_of"}, {"src": "item:vector-runtime", "dst": "category:learn-the-map", "type": "part_of"}, {"src": "item:3d-webgl-shader", "dst": "category:learn-the-map", "type": "part_of"}, {"src": "item:video-as-code", "dst": "category:learn-the-map", "type": "part_of"}, {"src": "item:ai-agent-authored", "dst": "category:learn-the-map", "type": "part_of"}, {"src": "item:adoption", "dst": "category:how-we-rank", "type": "part_of"}, {"src": "item:performance", "dst": "category:how-we-rank", "type": "part_of"}, {"src": "item:learning-curve", "dst": "category:how-we-rank", "type": "part_of"}, {"src": "item:license-openness", "dst": "category:how-we-rank", "type": "part_of"}, {"src": "item:agent-authorability", "dst": "category:how-we-rank", "type": "part_of"}, {"src": "item:maintenance-health", "dst": "category:how-we-rank", "type": "part_of"}, {"src": "repo:gsap", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:motion", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:anime-js", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:lenis", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:react-spring", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:autoanimate", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:tween-js", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:motion-one", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:theatre-js", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:mo-js", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:popmotion", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:velocity-js", "dst": "category:web-js-animation-timeline-tween-ui-motion", "type": "part_of"}, {"src": "repo:sonner", "dst": "category:css-utility-component-motion", "type": "part_of"}, {"src": "repo:vaul", "dst": "category:css-utility-component-motion", "type": "part_of"}, {"src": "repo:magic-ui", "dst": "category:css-utility-component-motion", "type": "part_of"}, {"src": "repo:aceternity-ui", "dst": "category:css-utility-component-motion", "type": "part_of"}, {"src": "repo:tw-animate-css", "dst": "category:css-utility-component-motion", "type": "part_of"}, {"src": "repo:animate-css", "dst": "category:css-utility-component-motion", "type": "part_of"}, {"src": "repo:animations-dev", "dst": "category:css-utility-component-motion", "type": "part_of"}, {"src": "repo:tailwindcss-animate", "dst": "category:css-utility-component-motion", "type": "part_of"}, {"src": "repo:aos", "dst": "category:css-utility-component-motion", "type": "part_of"}, {"src": "repo:lottie-lottie-web", "dst": "category:lottie-vector-runtimes-designer-authored-motion", "type": "part_of"}, {"src": "repo:rive", "dst": "category:lottie-vector-runtimes-designer-authored-motion", "type": "part_of"}, {"src": "repo:dotlottie", "dst": "category:lottie-vector-runtimes-designer-authored-motion", "type": "part_of"}, {"src": "repo:lottie-react-native", "dst": "category:lottie-vector-runtimes-designer-authored-motion", "type": "part_of"}, {"src": "repo:lottiefiles", "dst": "category:lottie-vector-runtimes-designer-authored-motion", "type": "part_of"}, {"src": "repo:svgator", "dst": "category:lottie-vector-runtimes-designer-authored-motion", "type": "part_of"}, {"src": "repo:three-js", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:pixijs", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:react-three-fiber", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:babylon-js", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:drei", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:playcanvas", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:p5-js", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:spline", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:ogl", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:shadertoy", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:zdog", "dst": "category:3d-webgl-shaders-immersive-generative-motion", "type": "part_of"}, {"src": "repo:heygen-hyperframes", "dst": "category:video-as-code-a-composition-rendered-to-frames", "type": "part_of"}, {"src": "repo:remotion", "dst": "category:video-as-code-a-composition-rendered-to-frames", "type": "part_of"}, {"src": "repo:motion-canvas", "dst": "category:video-as-code-a-composition-rendered-to-frames", "type": "part_of"}, {"src": "repo:revideo", "dst": "category:video-as-code-a-composition-rendered-to-frames", "type": "part_of"}, {"src": "repo:editly", "dst": "category:video-as-code-a-composition-rendered-to-frames", "type": "part_of"}, {"src": "repo:heygen-hyperframes", "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit", "type": "part_of"}, {"src": "repo:manim-community", "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit", "type": "part_of"}, {"src": "repo:remotion-agent-skills", "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit", "type": "part_of"}, {"src": "repo:claude-design-artifacts", "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit", "type": "part_of"}, {"src": "repo:lottie-creator-mcp", "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit", "type": "part_of"}, {"src": "repo:css-animation-skill", "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit", "type": "part_of"}, {"src": "repo:claude-video-watch", "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit", "type": "part_of"}, {"src": "repo:runway", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:openai-sora-2", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:google-veo-3-1", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:kling-3-0", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:heygen", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:synthesia", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:pika", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:luma-dream-machine", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:jitter", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:adobe-after-effects", "dst": "category:commercial-generative-video-proprietary-saas", "type": "part_of"}, {"src": "repo:motion", "dst": "repo:popmotion", "type": "builds_on"}, {"src": "repo:react-three-fiber", "dst": "repo:three-js", "type": "builds_on"}, {"src": "repo:drei", "dst": "repo:react-three-fiber", "type": "builds_on"}, {"src": "repo:dotlottie", "dst": "repo:lottie-lottie-web", "type": "builds_on"}, {"src": "repo:lottie-react-native", "dst": "repo:lottie-lottie-web", "type": "builds_on"}, {"src": "repo:revideo", "dst": "repo:motion-canvas", "type": "builds_on"}, {"src": "repo:remotion-agent-skills", "dst": "repo:remotion", "type": "builds_on"}], "colors": {"paper": "#6ab0f3", "repo": "#7bd88f", "person": "#e8a2c8", "lab": "#f3d06a", "talk": "#c79bf2", "benchmark": "#f0926a", "category": "#5a5a66", "concept": "#9adbe8", "item": "#9aa4b2"}};
+const W=()=>innerWidth,H=()=>innerHeight,cv=document.getElementById('c'),cx=cv.getContext('2d');
+const DPR=devicePixelRatio||1;
+function resize(){cv.width=W()*DPR;cv.height=H()*DPR;cv.style.width=W()+'px';cv.style.height=H()+'px'}
+resize();addEventListener('resize',resize);
+document.getElementById('meta').textContent=G.stats.nodes+' nodes · '+G.stats.edges+' edges';
+const deg={};G.edges.forEach(e=>{deg[e.src]=(deg[e.src]||0)+1;deg[e.dst]=(deg[e.dst]||0)+1});
+const N=G.nodes.map((n,i)=>({...n,
+  x:W()/2+Math.cos(i*2.399)*Math.sqrt(i)*22, y:H()/2+Math.sin(i*2.399)*Math.sqrt(i)*22,
+  vx:0,vy:0, r:5+Math.min(11,Math.sqrt(deg[n.id]||1)*2.2)}));
+const byId={};N.forEach(n=>byId[n.id]=n);
+const E=G.edges.filter(e=>byId[e.src]&&byId[e.dst]);
+const types=[...new Set(N.map(n=>n.type))], on=new Set(types);
+let sel=null,hover=null,q='';
+const vis=n=>on.has(n.type)&&(!q||(n.name+' '+(n.summary||'')+' '+(n.authors||'')).toLowerCase().includes(q));
+// legend
+const lg=document.getElementById('legend');
+types.forEach(t=>{const b=document.createElement('button');
+  b.innerHTML='<i style="background:'+(G.colors[t]||'#999')+'"></i>'+t+' <span style="color:#777">'+(G.stats.node_types[t]||'')+'</span>';
+  b.onclick=()=>{on.has(t)?on.delete(t):on.add(t);b.classList.toggle('off');kick()};lg.appendChild(b)});
+document.getElementById('q').addEventListener('input',e=>{q=e.target.value.toLowerCase().trim();kick()});
+// physics
+let alpha=1;const kick=()=>alpha=Math.max(alpha,.5);
+function step(){
+  const vn=N.filter(vis);if(alpha<.005)return;
+  // grid-bucketed repulsion (O(n·k))
+  const cell=120,grid=new Map();
+  vn.forEach(n=>{const k=(n.x/cell|0)+':'+(n.y/cell|0);(grid.get(k)||grid.set(k,[]).get(k)).push(n)});
+  vn.forEach(n=>{
+    for(let gx=-1;gx<2;gx++)for(let gy=-1;gy<2;gy++){
+      const b=grid.get(((n.x/cell|0)+gx)+':'+((n.y/cell|0)+gy));if(!b)continue;
+      for(const m of b){if(m===n)continue;
+        let dx=n.x-m.x,dy=n.y-m.y,d2=dx*dx+dy*dy||1;if(d2>cell*cell*4)continue;
+        const f=1400/d2;n.vx+=dx*f*alpha;n.vy+=dy*f*alpha}}
+    n.vx+=(W()/2-n.x)*.0012*alpha;n.vy+=(H()/2-n.y)*.0012*alpha});
+  E.forEach(e=>{const a=byId[e.src],b=byId[e.dst];if(!vis(a)||!vis(b))return;
+    const dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)||1,f=(d-90)/d*.012*alpha;
+    a.vx+=dx*f;a.vy+=dy*f;b.vx-=dx*f;b.vy-=dy*f});
+  vn.forEach(n=>{if(n===dragN)return;n.x+=n.vx*=.85;n.y+=n.vy*=.85});
+  alpha*=.985}
+// view transform
+let tx=0,ty=0,scale=1;
+function draw(){
+  cx.setTransform(DPR,0,0,DPR,0,0);cx.clearRect(0,0,W(),H());
+  cx.translate(tx,ty);cx.scale(scale,scale);
+  const nbr=sel?new Set(E.flatMap(e=>e.src===sel.id?[e.dst]:e.dst===sel.id?[e.src]:[])):null;
+  E.forEach(e=>{const a=byId[e.src],b=byId[e.dst];if(!vis(a)||!vis(b))return;
+    const hot=sel&&(e.src===sel.id||e.dst===sel.id);
+    cx.strokeStyle=hot?'#9ab8ffcc':'#2c2d36';cx.lineWidth=hot?1.4:.7;
+    cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()});
+  N.forEach(n=>{if(!vis(n))return;
+    const dim=sel&&n!==sel&&!(nbr&&nbr.has(n.id));
+    cx.globalAlpha=dim?.25:1;
+    cx.fillStyle=G.colors[n.type]||'#999';
+    cx.beginPath();cx.arc(n.x,n.y,n.r,0,7);cx.fill();
+    if(n===sel||n===hover){cx.strokeStyle='#fff';cx.lineWidth=1.5;cx.stroke()}
+    if(scale>.55&&(n.r>8||n===sel||n===hover||!dim&&scale>1.1)){
+      cx.fillStyle=dim?'#777':'#e6e6ea';cx.font='11px -apple-system,Inter,system-ui';
+      cx.fillText(n.name.slice(0,34),n.x+n.r+4,n.y+4)}
+    cx.globalAlpha=1});
+  step();requestAnimationFrame(draw)}
+requestAnimationFrame(draw);
+// interaction
+const pt=ev=>({x:(ev.clientX-tx)/scale,y:(ev.clientY-ty)/scale});
+const hit=ev=>{const p=pt(ev);let best=null,bd=1e9;
+  N.forEach(n=>{if(!vis(n))return;const d=(n.x-p.x)**2+(n.y-p.y)**2;
+    if(d<Math.max(144,n.r*n.r*2.6)&&d<bd){bd=d;best=n}});return best};
+let dragN=null,panning=false,px=0,py=0;
+cv.addEventListener('pointerdown',ev=>{dragN=hit(ev);
+  if(!dragN){panning=true;px=ev.clientX;py=ev.clientY;cv.style.cursor='grabbing'}});
+addEventListener('pointermove',ev=>{
+  if(dragN){const p=pt(ev);dragN.x=p.x;dragN.y=p.y;kick()}
+  else if(panning){tx+=ev.clientX-px;ty+=ev.clientY-py;px=ev.clientX;py=ev.clientY}
+  else hover=hit(ev)});
+addEventListener('pointerup',ev=>{
+  if(dragN&&!ev.movementX&&!ev.movementY||dragN&&hit(ev)===dragN)select(dragN);
+  else if(panning&&Math.abs(ev.clientX-px)<3)select(hit(ev));
+  dragN=null;panning=false;cv.style.cursor='grab'});
+cv.addEventListener('wheel',ev=>{ev.preventDefault();
+  const s=Math.exp(-ev.deltaY*.0012),ns=Math.min(4,Math.max(.2,scale*s));
+  tx=ev.clientX-(ev.clientX-tx)*ns/scale;ty=ev.clientY-(ev.clientY-ty)*ns/scale;scale=ns},{passive:false});
+// detail panel
+const panel=document.getElementById('panel');
+function select(n){sel=n;if(!n){panel.style.display='none';return}
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let h='<span class="x" onclick="select(null)">✕</span><h2>'+esc(n.name)+'</h2>'
+    +'<div class="ty">'+n.type+(n.category?' · '+esc(n.category):'')+'</div>';
+  if(n.summary)h+='<div class="sec">'+esc(n.summary)+'</div>';
+  if(n.authors)h+='<div class="sec"><b>authors</b> '+esc(n.authors)+'</div>';
+  const facts=[n.venue,n.year,n.citations&&('~'+n.citations+' citations'),n.stars&&('~'+n.stars+'★'),
+    n.confidence&&('confidence '+n.confidence)].filter(Boolean).join(' · ');
+  if(facts)h+='<div class="sec">'+esc(facts)+'</div>';
+  (n.links||[]).slice(0,6).forEach(u=>h+='<div class="sec"><a target="_blank" href="'+esc(u)+'">'+esc(u.replace(/^https?:\/\//,''))+'</a></div>');
+  const rel=E.filter(e=>e.src===n.id||e.dst===n.id);
+  if(rel.length){h+='<div class="sec"><b>'+rel.length+' connections</b></div>';
+    rel.slice(0,40).forEach(e=>{const other=e.src===n.id?byId[e.dst]:byId[e.src];
+      h+='<div class="edge" data-id="'+esc(other.id)+'">'+(e.src===n.id?'<i>'+e.type+' →</i> ':'<i>← '+e.type+'</i> ')+esc(other.name)+'</div>'})}
+  panel.innerHTML=h;panel.style.display='block';
+  panel.querySelectorAll('.edge').forEach(el=>el.onclick=()=>{const m=byId[el.dataset.id];if(m)select(m)});
+  kick()}
+window.select=select;
+// ───────────────────────── Ask the field (free NVIDIA NIM via keyless CORS bridge) ──
+const BRIDGE='https://nim-bridge.vercel.app/api/chat';
+const askEl=document.getElementById('ask'),msgs=document.getElementById('msgs'),
+  keyrow=document.getElementById('keyrow'),askform=document.getElementById('askform');
+const esc2=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const getKey=()=>localStorage.getItem('nim_key')||'';
+function keyMode(on){keyrow.style.display=on?'block':'none';askform.style.display=on?'none':'flex'}
+document.getElementById('askbtn').onclick=()=>{askEl.style.display='flex';keyMode(!getKey());
+  if(!msgs.children.length)addBot('Ask anything about this field — answers are grounded in the '
+    +G.stats.nodes+'-node graph and cite the nodes they used. Try: "what is the lineage from the Gödel Machine to the Darwin Gödel Machine?"');
+  document.getElementById(getKey()?'askq':'keyin').focus()};
+document.getElementById('askclose').onclick=()=>askEl.style.display='none';
+document.getElementById('keygear').onclick=()=>keyMode(true);
+document.getElementById('keysave').onclick=()=>{const v=document.getElementById('keyin').value.trim();
+  if(!v.startsWith('nvapi-')){alert('That does not look like an NVIDIA key (nvapi-…)');return}
+  localStorage.setItem('nim_key',v);keyMode(false);document.getElementById('askq').focus()};
+function addMsg(cls,text){const d=document.createElement('div');d.className='m '+cls;
+  d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d}
+function addBot(text,nodes){const d=addMsg('bot','');
+  d.innerHTML=esc2(text).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
+  if(nodes&&nodes.length){const c=document.createElement('div');c.className='chips';
+    nodes.slice(0,8).forEach(n=>{const ch=document.createElement('span');ch.className='chip';
+      ch.textContent=n.name.slice(0,30);ch.onclick=()=>select(n);c.appendChild(ch)});
+    d.appendChild(c)}
+  msgs.scrollTop=msgs.scrollHeight;return d}
+const tok2=s=>(String(s).toLowerCase().match(/[a-z0-9]+/g)||[]).filter(w=>w.length>2);
+function retrieve(q){
+  const qt=new Set(tok2(q));
+  const scored=N.map(n=>{let s=0;
+    tok2(n.name).forEach(w=>{if(qt.has(w))s+=3});
+    tok2((n.summary||'')+' '+(n.authors||'')+' '+(n.category||'')+' '+n.type).forEach(w=>{if(qt.has(w))s++});
+    return [s,n]}).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]);
+  let nodes=scored.slice(0,10).map(x=>x[1]);
+  if(!nodes.length)nodes=N.filter(n=>n.type==='paper').slice(0,8);
+  const ids=new Set(nodes.map(n=>n.id)),hot=new Set(nodes.slice(0,3).map(n=>n.id));
+  const edges=[],extra=new Set();
+  E.forEach(e=>{
+    if(ids.has(e.src)&&ids.has(e.dst))edges.push(e);
+    else if(edges.length<40&&e.type!=='part_of'&&(hot.has(e.src)||hot.has(e.dst))){
+      edges.push(e);extra.add(hot.has(e.src)?e.dst:e.src)}});
+  extra.forEach(id=>{if(byId[id]&&!ids.has(id)&&nodes.length<16)nodes.push(byId[id])});
+  return {nodes,edges}}
+function ctxText(r){const L=[];
+  r.nodes.forEach(n=>{let l=n.name+' ['+n.type+(n.year?', '+n.year:'')
+    +(n.citations?', ~'+n.citations+' citations':'')+(n.stars?', ~'+n.stars+' stars':'')+']';
+    if(n.summary)l+=' — '+n.summary;if(n.authors)l+='. Authors: '+n.authors;
+    if(n.links&&n.links[0])l+='. Link: '+n.links[0];L.push('• '+l)});
+  r.edges.forEach(e=>{const a=byId[e.src],b=byId[e.dst];
+    if(a&&b)L.push('• '+a.name+' —'+e.type+'→ '+b.name)});
+  return L.join('\n')}
+const history=[];
+askform.onsubmit=async ev=>{ev.preventDefault();
+  const q=document.getElementById('askq').value.trim();if(!q)return;
+  document.getElementById('askq').value='';addMsg('user',q);
+  const thinking=addMsg('bot','…thinking (free tier can queue 10–60s)');
+  const r=retrieve(q);
+  const sys='You are the guide to the "'+G.subject+'" living knowledge graph. Answer ONLY from '
+    +'the CONTEXT below (nodes and typed edges compiled from the curated README). Cite the node '
+    +'names you used in **bold**. If the context cannot answer, say so and name the closest nodes. '
+    +'Be concise and concrete.\n\nCONTEXT:\n'+ctxText(r);
+  history.push({role:'user',content:q});
+  try{
+    const res=await fetch(BRIDGE,{method:'POST',
+      headers:{'Content-Type':'application/json',Authorization:'Bearer '+getKey()},
+      body:JSON.stringify({model:document.getElementById('model').value,
+        messages:[{role:'system',content:sys},...history.slice(-6)],
+        temperature:0.3,max_tokens:700})});
+    const data=await res.json().catch(()=>({}));
+    thinking.remove();
+    if(!res.ok){
+      const why=res.status===401||res.status===403?'NVIDIA rejected the key — check it (⚙) or get a fresh one at build.nvidia.com/models.':
+        res.status===429?'Free tier throttled (~40 req/min) — wait a minute and retry.':
+        'Error '+res.status+': '+esc2(JSON.stringify(data).slice(0,200));
+      addMsg('bot err',why);history.pop();return}
+    const msg=(data.choices&&data.choices[0]&&data.choices[0].message)||{};
+    const out=msg.content||msg.reasoning_content||'(empty reply)';
+    history.push({role:'assistant',content:out});
+    addBot(out,r.nodes)}
+  catch(e){thinking.remove();history.pop();
+    addMsg('bot err','Bridge unreachable ('+esc2(String(e).slice(0,120))+'). Check your network.')}};
+</script></body></html>

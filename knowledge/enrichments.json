@@ -1,0 +1,13 @@
+{
+  "_comment": "Curator overlay merged into graph.json by awesome_kg.py --enrich. Lineage edges (builds_on) grounded in well-known successions. Survives regeneration — edit this, not graph.json.",
+  "nodes": [],
+  "edges": [
+    {"src": "repo:motion", "dst": "repo:popmotion", "type": "builds_on"},
+    {"src": "repo:react-three-fiber", "dst": "repo:three-js", "type": "builds_on"},
+    {"src": "repo:drei", "dst": "repo:react-three-fiber", "type": "builds_on"},
+    {"src": "repo:dotlottie", "dst": "repo:lottie-lottie-web", "type": "builds_on"},
+    {"src": "repo:lottie-react-native", "dst": "repo:lottie-lottie-web", "type": "builds_on"},
+    {"src": "repo:revideo", "dst": "repo:motion-canvas", "type": "builds_on"},
+    {"src": "repo:remotion-agent-skills", "dst": "repo:remotion", "type": "builds_on"}
+  ]
+}

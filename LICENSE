@@ -1,0 +1,18 @@
+Animate Anything — licensing
+
+CONTENT (the curated lists, README, docs, knowledge graph):
+  Creative Commons Attribution 4.0 International (CC BY 4.0)
+  https://creativecommons.org/licenses/by/4.0/
+  You may share and adapt with attribution to "Animate Anything (github.com/wjlgatech/animate-anything)".
+
+CODE (everything under scripts/):
+  MIT License — Copyright (c) 2026 Paul Wu (wjlgatech)
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this
+  software and associated documentation files (the "Software"), to deal in the Software
+  without restriction, including without limitation the rights to use, copy, modify, merge,
+  publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons
+  to whom the Software is furnished to do so, subject to the inclusion of the above copyright
+  notice and this permission notice in all copies. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  WARRANTY OF ANY KIND.
+
+EACH LISTED TOOL retains its own upstream license (shown in its row).

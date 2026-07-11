@@ -1,0 +1,77 @@
+# Animate Anything — agent index (llms.txt)
+
+> A ranked, machine-readable map of animation tooling. One line per tool: name — description [link].
+> Full typed graph: knowledge/graph.json · Repo: https://github.com/wjlgatech/animate-anything
+
+## 🌊 Web / JS animation — timeline, tween & UI motion
+- Anime.js — Lightweight, expressive timeline for DOM/SVG/JS objects (v4, 2025). [https://github.com/juliangarnier/anime]
+- AutoAnimate — One line → automatic add/remove/move transitions [https://github.com/formkit/auto-animate]
+- GSAP — The pro timeline engine — scroll, SVG, precise sequencing [https://github.com/greensock/GSAP]
+- Lenis — Smooth-scroll foundation that scroll-driven motion is built on. [https://github.com/darkroomengineering/lenis]
+- Mo.js — Motion-graphics toolkit for the web. [https://github.com/mojs/mojs]
+- Motion — Formerly Framer Motion — spring/layout/gesture animation for React & JS [https://github.com/motiondivision/motion]
+- Motion One — Tiny (~2kb) WAAPI-based animator. [https://github.com/motiondivision/motionone]
+- Popmotion — Being absorbed into Motion — prefer Motion. [https://github.com/Popmotion/popmotion]
+- React Spring — Spring-physics animation for React. [https://github.com/pmndrs/react-spring]
+- Theatre.js — Visual sequence editor for JS & 3D. [https://github.com/theatre-js/theatre]
+- Tween.js — Minimal tweening primitive, often paired with Three.js. [https://github.com/tweenjs/tween.js]
+- Velocity.js — Historic jQuery-era animator, unmaintained since 2020. [https://github.com/julianshapiro/velocity]
+
+## 🎨 CSS / utility & component motion
+- Aceternity UI — Copy-paste flashy animated sections. [https://ui.aceternity.com]
+- Animate.css — Drop-in CSS keyframe classes [https://github.com/animate-css/animate.css]
+- animations.dev — Emil Kowalski's animation course — the craft curriculum. [https://animations.dev]
+- AOS — Animate-on-scroll, low maintenance. [https://github.com/michalsnik/aos]
+- Magic UI — Animated React/Tailwind components, shadcn-style registry. [https://github.com/magicuidesign/magicui]
+- Sonner — Emil Kowalski's toast — the craft reference (13M+ weekly npm). [https://github.com/emilkowalski/sonner]
+- tailwindcss-animate — v3-era; superseded by tw-animate-css. [https://github.com/jamiebuilds/tailwindcss-animate]
+- tw-animate-css — Tailwind v4 animation utilities — the current shadcn default. [https://github.com/Wombosvideo/tw-animate-css]
+- Vaul — Emil Kowalski's drawer — physics-y, accessible. [https://github.com/emilkowalski/vaul]
+
+## 🪁 Lottie / vector runtimes — designer-authored motion
+- dotLottie — The modern Lottie player/format (compressed, themable). [https://github.com/LottieFiles/dotlottie-web]
+- Lottie (lottie-web) — Play After-Effects vector animations as JSON on the web [https://github.com/airbnb/lottie-web]
+- lottie-react-native — Lottie for React Native. [https://github.com/lottie-react-native/lottie-react-native]
+- LottieFiles — The vector-animation ecosystem — marketplace, tools, players, MCP. [https://lottiefiles.com]
+- Rive — Interactive, state-machine vector animation — small, real-time, input-driven. [https://github.com/rive-app/rive-runtime]
+- SVGator — No-code SVG animation editor. [https://svgator.com]
+
+## 3D / WebGL / shaders — immersive & generative motion
+- Babylon.js — Full-featured 3D engine (games, XR). [https://github.com/BabylonJS/Babylon.js]
+- drei — R3F helpers — the batteries for react-three-fiber. [https://github.com/pmndrs/drei]
+- OGL — Minimal WebGL when Three.js is too heavy. [https://github.com/oframe/ogl]
+- p5.js — Creative-coding for generative/ambient motion. [https://github.com/processing/p5.js]
+- PixiJS — Fast 2D WebGL renderer for effects & particles. [https://github.com/pixijs/pixijs]
+- PlayCanvas — 3D engine with a cloud editor. [https://github.com/playcanvas/engine]
+- React Three Fiber — Three.js as declarative React components. [https://github.com/pmndrs/react-three-fiber]
+- Shadertoy — The fragment-shader learning & sharing hub (not a dependency). [https://www.shadertoy.com]
+- Spline — No-code 3D design & animation, exportable to web. [https://spline.design]
+- Three.js — The WebGL 3D standard. [https://github.com/mrdoob/three.js]
+- Zdog — Pseudo-3D round vector illustrations (dormant). [https://github.com/metafizzy/zdog]
+
+## 🎞 Video-as-code — a composition rendered to frames
+- Editly — Declarative FFmpeg video editing from a spec. [https://github.com/mifi/editly]
+- HeyGen Hyperframes — Agent-native: author HTML/CSS/GSAP, render MP4 locally (headless-Chrome+FFmpeg), deterministic [https://github.com/heygen-com/hyperframes]
+- Motion Canvas — Code-driven vector animation with a visual editor — great for explainers. [https://github.com/motion-canvas/motion-canvas]
+- Remotion — Make videos in React — data-driven, programmatic MP4 [https://github.com/remotion-dev/remotion]
+- Revideo — Programmatic video built on Motion Canvas, API-first. [https://github.com/redotvideo/revideo]
+
+## AI / agent-authored animation — a prompt or reference → a composition
+- Claude Design / Artifacts — The mainstream path for an LLM to author self-contained animated HTML/CSS/JS. [https://claude.ai]
+- claude-video `/watch` — Lets an agent watch a reference video (yt-dlp + FFmpeg + Whisper) [https://github.com/bradautomates/claude-video]
+- css-animation-skill — A Claude Code skill that teaches an agent CSS-animation craft. [https://github.com/neonwatty/css-animation-skill]
+- Lottie Creator MCP — LottieFiles' MCP — the most production-credible agent path to vector animation. [https://lottiefiles.com]
+- Manim (Community) — The most LLM-authorable animator — Python `Scene` classes, huge training footprint [https://github.com/ManimCommunity/manim]
+- Remotion Agent Skills — Official Agent Skills (Jan 2026) for Claude Code/Cursor — agents author React video. [https://github.com/remotion-dev/remotion]
+
+## 🎥 Commercial generative video (proprietary SaaS)
+- Adobe After Effects — The professional motion-graphics incumbent. [https://www.adobe.com/products/aftereffects.html]
+- Google Veo 3.1 — 4K generation with lip-sync. [https://deepmind.google/models/veo]
+- HeyGen — AI-avatar spokesperson video. [https://heygen.com]
+- Jitter — Motion-design tool (not AI-gen) — quick branded animation. [https://jitter.video]
+- Kling 3.0 — Best price/quality generative video. [https://klingai.com]
+- Luma Dream Machine — Text/image→video. [https://lumalabs.ai]
+- OpenAI Sora 2 — Frontier-quality generative video. [https://openai.com/sora]
+- Pika — Fast, playful generative video. [https://pika.art]
+- Runway — Production text/image→video suite (Gen-4). [https://runwayml.com]
+- Synthesia — Enterprise avatar video. [https://synthesia.io]

@@ -1,0 +1,1277 @@
+{
+ "kind": "awesome",
+ "subject": "Awesome Animation",
+ "nodes": [
+  {
+   "id": "category:learn-the-map",
+   "type": "category",
+   "name": "🧭 Learn — the map",
+   "links": [],
+   "confidence": 0.6
+  },
+  {
+   "id": "item:css-declarative",
+   "type": "item",
+   "name": "CSS / declarative",
+   "links": [],
+   "category": "🧭 Learn — the map",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:js-timeline-tween",
+   "type": "item",
+   "name": "JS timeline / tween",
+   "links": [],
+   "category": "🧭 Learn — the map",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:ui-framework-motion",
+   "type": "item",
+   "name": "UI-framework motion",
+   "links": [],
+   "category": "🧭 Learn — the map",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:vector-runtime",
+   "type": "item",
+   "name": "Vector runtime",
+   "links": [],
+   "category": "🧭 Learn — the map",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:3d-webgl-shader",
+   "type": "item",
+   "name": "3D / WebGL / shader",
+   "links": [],
+   "category": "🧭 Learn — the map",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:video-as-code",
+   "type": "item",
+   "name": "Video-as-code",
+   "links": [],
+   "category": "🧭 Learn — the map",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:ai-agent-authored",
+   "type": "item",
+   "name": "AI / agent-authored",
+   "links": [],
+   "category": "🧭 Learn — the map",
+   "confidence": 0.6
+  },
+  {
+   "id": "category:how-we-rank",
+   "type": "category",
+   "name": "How we rank",
+   "links": [],
+   "confidence": 0.6
+  },
+  {
+   "id": "item:adoption",
+   "type": "item",
+   "name": "Adoption",
+   "links": [],
+   "category": "How we rank",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:performance",
+   "type": "item",
+   "name": "Performance",
+   "links": [],
+   "category": "How we rank",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:learning-curve",
+   "type": "item",
+   "name": "Learning curve",
+   "links": [],
+   "category": "How we rank",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:license-openness",
+   "type": "item",
+   "name": "License openness",
+   "links": [],
+   "category": "How we rank",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:agent-authorability",
+   "type": "item",
+   "name": "Agent-authorability",
+   "links": [],
+   "category": "How we rank",
+   "confidence": 0.6
+  },
+  {
+   "id": "item:maintenance-health",
+   "type": "item",
+   "name": "Maintenance health",
+   "links": [],
+   "category": "How we rank",
+   "confidence": 0.6
+  },
+  {
+   "id": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "category",
+   "name": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "links": [],
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:gsap",
+   "type": "repo",
+   "name": "GSAP",
+   "links": [
+    "https://github.com/greensock/GSAP"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 26000,
+   "summary": "The pro timeline engine — scroll, SVG, precise sequencing. Now 100% free incl. all plugins (2025). Reach for orchestrated, exact motion.",
+   "confidence": 0.97
+  },
+  {
+   "id": "repo:motion",
+   "type": "repo",
+   "name": "Motion",
+   "links": [
+    "https://github.com/motiondivision/motion"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 33000,
+   "summary": "Formerly Framer Motion — spring/layout/gesture animation for React & JS. The default for app UIs.",
+   "confidence": 0.98
+  },
+  {
+   "id": "repo:anime-js",
+   "type": "repo",
+   "name": "Anime.js",
+   "links": [
+    "https://github.com/juliangarnier/anime"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 71000,
+   "summary": "Lightweight, expressive timeline for DOM/SVG/JS objects (v4, 2025).",
+   "confidence": 1.0
+  },
+  {
+   "id": "repo:lenis",
+   "type": "repo",
+   "name": "Lenis",
+   "links": [
+    "https://github.com/darkroomengineering/lenis"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 14000,
+   "summary": "Smooth-scroll foundation that scroll-driven motion is built on.",
+   "confidence": 0.94
+  },
+  {
+   "id": "repo:react-spring",
+   "type": "repo",
+   "name": "React Spring",
+   "links": [
+    "https://github.com/pmndrs/react-spring"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 29000,
+   "summary": "Spring-physics animation for React.",
+   "confidence": 0.97
+  },
+  {
+   "id": "repo:autoanimate",
+   "type": "repo",
+   "name": "AutoAnimate",
+   "links": [
+    "https://github.com/formkit/auto-animate"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 14000,
+   "summary": "One line → automatic add/remove/move transitions. Zero-config delight.",
+   "confidence": 0.94
+  },
+  {
+   "id": "repo:tween-js",
+   "type": "repo",
+   "name": "Tween.js",
+   "links": [
+    "https://github.com/tweenjs/tween.js"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 10000,
+   "summary": "Minimal tweening primitive, often paired with Three.js.",
+   "confidence": 0.93
+  },
+  {
+   "id": "repo:motion-one",
+   "type": "repo",
+   "name": "Motion One",
+   "links": [
+    "https://github.com/motiondivision/motionone"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 3000,
+   "summary": "Tiny (~2kb) WAAPI-based animator.",
+   "confidence": 0.87
+  },
+  {
+   "id": "repo:theatre-js",
+   "type": "repo",
+   "name": "Theatre.js",
+   "links": [
+    "https://github.com/theatre-js/theatre"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 12000,
+   "summary": "Visual sequence editor for JS & 3D.",
+   "confidence": 0.93
+  },
+  {
+   "id": "repo:mo-js",
+   "type": "repo",
+   "name": "Mo.js",
+   "links": [
+    "https://github.com/mojs/mojs"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 19000,
+   "summary": "Motion-graphics toolkit for the web.",
+   "confidence": 0.96
+  },
+  {
+   "id": "repo:popmotion",
+   "type": "repo",
+   "name": "Popmotion",
+   "links": [
+    "https://github.com/Popmotion/popmotion"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 20000,
+   "summary": "Being absorbed into Motion — prefer Motion.",
+   "confidence": 0.96
+  },
+  {
+   "id": "repo:velocity-js",
+   "type": "repo",
+   "name": "Velocity.js",
+   "links": [
+    "https://github.com/julianshapiro/velocity"
+   ],
+   "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "stars": 17000,
+   "summary": "Historic jQuery-era animator, unmaintained since 2020.",
+   "confidence": 0.95
+  },
+  {
+   "id": "category:css-utility-component-motion",
+   "type": "category",
+   "name": "🎨 CSS / utility & component motion",
+   "links": [],
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:sonner",
+   "type": "repo",
+   "name": "Sonner",
+   "links": [
+    "https://github.com/emilkowalski/sonner"
+   ],
+   "category": "🎨 CSS / utility & component motion",
+   "stars": 13000,
+   "summary": "Emil Kowalski's toast — the craft reference (13M+ weekly npm).",
+   "confidence": 0.94
+  },
+  {
+   "id": "repo:vaul",
+   "type": "repo",
+   "name": "Vaul",
+   "links": [
+    "https://github.com/emilkowalski/vaul"
+   ],
+   "category": "🎨 CSS / utility & component motion",
+   "stars": 8,
+   "summary": "Emil Kowalski's drawer — physics-y, accessible.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:magic-ui",
+   "type": "repo",
+   "name": "Magic UI",
+   "links": [
+    "https://github.com/magicuidesign/magicui"
+   ],
+   "category": "🎨 CSS / utility & component motion",
+   "stars": 21000,
+   "summary": "Animated React/Tailwind components, shadcn-style registry.",
+   "confidence": 0.96
+  },
+  {
+   "id": "repo:aceternity-ui",
+   "type": "repo",
+   "name": "Aceternity UI",
+   "links": [
+    "https://ui.aceternity.com"
+   ],
+   "category": "🎨 CSS / utility & component motion",
+   "summary": "Copy-paste flashy animated sections.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:tw-animate-css",
+   "type": "repo",
+   "name": "tw-animate-css",
+   "links": [
+    "https://github.com/Wombosvideo/tw-animate-css"
+   ],
+   "category": "🎨 CSS / utility & component motion",
+   "stars": 780,
+   "summary": "Tailwind v4 animation utilities — the current shadcn default.",
+   "confidence": 0.81
+  },
+  {
+   "id": "repo:animate-css",
+   "type": "repo",
+   "name": "Animate.css",
+   "links": [
+    "https://github.com/animate-css/animate.css"
+   ],
+   "category": "🎨 CSS / utility & component motion",
+   "stars": 83000,
+   "summary": "Drop-in CSS keyframe classes. Note the non-standard license.",
+   "confidence": 1.0
+  },
+  {
+   "id": "repo:animations-dev",
+   "type": "repo",
+   "name": "animations.dev",
+   "links": [
+    "https://animations.dev"
+   ],
+   "category": "🎨 CSS / utility & component motion",
+   "summary": "Emil Kowalski's animation course — the craft curriculum.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:tailwindcss-animate",
+   "type": "repo",
+   "name": "tailwindcss-animate",
+   "links": [
+    "https://github.com/jamiebuilds/tailwindcss-animate"
+   ],
+   "category": "🎨 CSS / utility & component motion",
+   "stars": 3000,
+   "summary": "v3-era; superseded by tw-animate-css.",
+   "confidence": 0.87
+  },
+  {
+   "id": "repo:aos",
+   "type": "repo",
+   "name": "AOS",
+   "links": [
+    "https://github.com/michalsnik/aos"
+   ],
+   "category": "🎨 CSS / utility & component motion",
+   "stars": 28000,
+   "summary": "Animate-on-scroll, low maintenance.",
+   "confidence": 0.97
+  },
+  {
+   "id": "category:lottie-vector-runtimes-designer-authored-motion",
+   "type": "category",
+   "name": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "links": [],
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:lottie-lottie-web",
+   "type": "repo",
+   "name": "Lottie (lottie-web)",
+   "links": [
+    "https://github.com/airbnb/lottie-web"
+   ],
+   "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "stars": 32000,
+   "summary": "Play After-Effects vector animations as JSON on the web. The foundation (aging).",
+   "confidence": 0.98
+  },
+  {
+   "id": "repo:rive",
+   "type": "repo",
+   "name": "Rive",
+   "links": [
+    "https://github.com/rive-app/rive-runtime"
+   ],
+   "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "stars": 1000,
+   "summary": "Interactive, state-machine vector animation — small, real-time, input-driven.",
+   "confidence": 0.82
+  },
+  {
+   "id": "repo:dotlottie",
+   "type": "repo",
+   "name": "dotLottie",
+   "links": [
+    "https://github.com/LottieFiles/dotlottie-web"
+   ],
+   "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "stars": 800,
+   "summary": "The modern Lottie player/format (compressed, themable).",
+   "confidence": 0.81
+  },
+  {
+   "id": "repo:lottie-react-native",
+   "type": "repo",
+   "name": "lottie-react-native",
+   "links": [
+    "https://github.com/lottie-react-native/lottie-react-native"
+   ],
+   "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "stars": 17000,
+   "summary": "Lottie for React Native.",
+   "confidence": 0.95
+  },
+  {
+   "id": "repo:lottiefiles",
+   "type": "repo",
+   "name": "LottieFiles",
+   "links": [
+    "https://lottiefiles.com"
+   ],
+   "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "summary": "The vector-animation ecosystem — marketplace, tools, players, MCP.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:svgator",
+   "type": "repo",
+   "name": "SVGator",
+   "links": [
+    "https://svgator.com"
+   ],
+   "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "summary": "No-code SVG animation editor.",
+   "confidence": 0.6
+  },
+  {
+   "id": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "category",
+   "name": "3D / WebGL / shaders — immersive & generative motion",
+   "links": [],
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:three-js",
+   "type": "repo",
+   "name": "Three.js",
+   "links": [
+    "https://github.com/mrdoob/three.js"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "stars": 114000,
+   "summary": "The WebGL 3D standard.",
+   "confidence": 1.0
+  },
+  {
+   "id": "repo:pixijs",
+   "type": "repo",
+   "name": "PixiJS",
+   "links": [
+    "https://github.com/pixijs/pixijs"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "stars": 48000,
+   "summary": "Fast 2D WebGL renderer for effects & particles.",
+   "confidence": 1.0
+  },
+  {
+   "id": "repo:react-three-fiber",
+   "type": "repo",
+   "name": "React Three Fiber",
+   "links": [
+    "https://github.com/pmndrs/react-three-fiber"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "stars": 31000,
+   "summary": "Three.js as declarative React components.",
+   "confidence": 0.98
+  },
+  {
+   "id": "repo:babylon-js",
+   "type": "repo",
+   "name": "Babylon.js",
+   "links": [
+    "https://github.com/BabylonJS/Babylon.js"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "stars": 26000,
+   "summary": "Full-featured 3D engine (games, XR).",
+   "confidence": 0.97
+  },
+  {
+   "id": "repo:drei",
+   "type": "repo",
+   "name": "drei",
+   "links": [
+    "https://github.com/pmndrs/drei"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "stars": 9,
+   "summary": "R3F helpers — the batteries for react-three-fiber.",
+   "confidence": 0.61
+  },
+  {
+   "id": "repo:playcanvas",
+   "type": "repo",
+   "name": "PlayCanvas",
+   "links": [
+    "https://github.com/playcanvas/engine"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "stars": 16000,
+   "summary": "3D engine with a cloud editor.",
+   "confidence": 0.95
+  },
+  {
+   "id": "repo:p5-js",
+   "type": "repo",
+   "name": "p5.js",
+   "links": [
+    "https://github.com/processing/p5.js"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "stars": 24000,
+   "summary": "Creative-coding for generative/ambient motion.",
+   "confidence": 0.97
+  },
+  {
+   "id": "repo:spline",
+   "type": "repo",
+   "name": "Spline",
+   "links": [
+    "https://spline.design"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "summary": "No-code 3D design & animation, exportable to web.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:ogl",
+   "type": "repo",
+   "name": "OGL",
+   "links": [
+    "https://github.com/oframe/ogl"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "stars": 4,
+   "summary": "Minimal WebGL when Three.js is too heavy.",
+   "confidence": 0.57
+  },
+  {
+   "id": "repo:shadertoy",
+   "type": "repo",
+   "name": "Shadertoy",
+   "links": [
+    "https://www.shadertoy.com"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "summary": "The fragment-shader learning & sharing hub (not a dependency).",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:zdog",
+   "type": "repo",
+   "name": "Zdog",
+   "links": [
+    "https://github.com/metafizzy/zdog"
+   ],
+   "category": "3D / WebGL / shaders — immersive & generative motion",
+   "stars": 10,
+   "summary": "Pseudo-3D round vector illustrations (dormant).",
+   "confidence": 0.61
+  },
+  {
+   "id": "category:video-as-code-a-composition-rendered-to-frames",
+   "type": "category",
+   "name": "🎞 Video-as-code — a composition rendered to frames",
+   "links": [],
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:heygen-hyperframes",
+   "type": "repo",
+   "name": "HeyGen Hyperframes",
+   "links": [
+    "https://github.com/heygen-com/hyperframes"
+   ],
+   "category": "🎞 Video-as-code — a composition rendered to frames",
+   "stars": 34000,
+   "summary": "Agent-native: author HTML/CSS/GSAP, render MP4 locally (headless-Chrome+FFmpeg), deterministic. The center of \"video as code for agents.\"",
+   "confidence": 0.98
+  },
+  {
+   "id": "repo:remotion",
+   "type": "repo",
+   "name": "Remotion",
+   "links": [
+    "https://github.com/remotion-dev/remotion"
+   ],
+   "category": "🎞 Video-as-code — a composition rendered to frames",
+   "stars": 53000,
+   "summary": "Make videos in React — data-driven, programmatic MP4. Note the tiered commercial license.",
+   "confidence": 1.0
+  },
+  {
+   "id": "repo:motion-canvas",
+   "type": "repo",
+   "name": "Motion Canvas",
+   "links": [
+    "https://github.com/motion-canvas/motion-canvas"
+   ],
+   "category": "🎞 Video-as-code — a composition rendered to frames",
+   "stars": 19000,
+   "summary": "Code-driven vector animation with a visual editor — great for explainers.",
+   "confidence": 0.96
+  },
+  {
+   "id": "repo:revideo",
+   "type": "repo",
+   "name": "Revideo",
+   "links": [
+    "https://github.com/redotvideo/revideo"
+   ],
+   "category": "🎞 Video-as-code — a composition rendered to frames",
+   "stars": 3,
+   "summary": "Programmatic video built on Motion Canvas, API-first.",
+   "confidence": 0.56
+  },
+  {
+   "id": "repo:editly",
+   "type": "repo",
+   "name": "Editly",
+   "links": [
+    "https://github.com/mifi/editly"
+   ],
+   "category": "🎞 Video-as-code — a composition rendered to frames",
+   "stars": 5,
+   "summary": "Declarative FFmpeg video editing from a spec.",
+   "confidence": 0.58
+  },
+  {
+   "id": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit",
+   "type": "category",
+   "name": "AI / agent-authored animation — a prompt or reference → a composition",
+   "links": [],
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:manim-community",
+   "type": "repo",
+   "name": "Manim (Community)",
+   "links": [
+    "https://github.com/ManimCommunity/manim"
+   ],
+   "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "stars": 39000,
+   "summary": "The most LLM-authorable animator — Python `Scene` classes, huge training footprint. Ideal for agent-generated explainers.",
+   "confidence": 0.99
+  },
+  {
+   "id": "repo:remotion-agent-skills",
+   "type": "repo",
+   "name": "Remotion Agent Skills",
+   "links": [
+    "https://github.com/remotion-dev/remotion"
+   ],
+   "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "stars": 53000,
+   "summary": "Official Agent Skills (Jan 2026) for Claude Code/Cursor — agents author React video.",
+   "confidence": 1.0
+  },
+  {
+   "id": "repo:claude-design-artifacts",
+   "type": "repo",
+   "name": "Claude Design / Artifacts",
+   "links": [
+    "https://claude.ai"
+   ],
+   "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "summary": "The mainstream path for an LLM to author self-contained animated HTML/CSS/JS.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:lottie-creator-mcp",
+   "type": "repo",
+   "name": "Lottie Creator MCP",
+   "links": [
+    "https://lottiefiles.com"
+   ],
+   "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "summary": "LottieFiles' MCP — the most production-credible agent path to vector animation.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:css-animation-skill",
+   "type": "repo",
+   "name": "css-animation-skill",
+   "links": [
+    "https://github.com/neonwatty/css-animation-skill"
+   ],
+   "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "summary": "A Claude Code skill that teaches an agent CSS-animation craft.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:claude-video-watch",
+   "type": "repo",
+   "name": "claude-video `/watch`",
+   "links": [
+    "https://github.com/bradautomates/claude-video"
+   ],
+   "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "stars": 7,
+   "summary": "Lets an agent watch a reference video (yt-dlp + FFmpeg + Whisper). Comprehension, not authoring — the \"study a reference\" half of the loop.",
+   "confidence": 0.6
+  },
+  {
+   "id": "category:commercial-generative-video-proprietary-saas",
+   "type": "category",
+   "name": "🎥 Commercial generative video (proprietary SaaS)",
+   "links": [],
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:runway",
+   "type": "repo",
+   "name": "Runway",
+   "links": [
+    "https://runwayml.com"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "Production text/image→video suite (Gen-4).",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:openai-sora-2",
+   "type": "repo",
+   "name": "OpenAI Sora 2",
+   "links": [
+    "https://openai.com/sora"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "Frontier-quality generative video.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:google-veo-3-1",
+   "type": "repo",
+   "name": "Google Veo 3.1",
+   "links": [
+    "https://deepmind.google/models/veo"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "4K generation with lip-sync.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:kling-3-0",
+   "type": "repo",
+   "name": "Kling 3.0",
+   "links": [
+    "https://klingai.com"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "Best price/quality generative video.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:heygen",
+   "type": "repo",
+   "name": "HeyGen",
+   "links": [
+    "https://heygen.com"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "AI-avatar spokesperson video.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:synthesia",
+   "type": "repo",
+   "name": "Synthesia",
+   "links": [
+    "https://synthesia.io"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "Enterprise avatar video.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:pika",
+   "type": "repo",
+   "name": "Pika",
+   "links": [
+    "https://pika.art"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "Fast, playful generative video.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:luma-dream-machine",
+   "type": "repo",
+   "name": "Luma Dream Machine",
+   "links": [
+    "https://lumalabs.ai"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "Text/image→video.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:jitter",
+   "type": "repo",
+   "name": "Jitter",
+   "links": [
+    "https://jitter.video"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "Motion-design tool (not AI-gen) — quick branded animation.",
+   "confidence": 0.6
+  },
+  {
+   "id": "repo:adobe-after-effects",
+   "type": "repo",
+   "name": "Adobe After Effects",
+   "links": [
+    "https://www.adobe.com/products/aftereffects.html"
+   ],
+   "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "summary": "The professional motion-graphics incumbent.",
+   "confidence": 0.6
+  }
+ ],
+ "edges": [
+  {
+   "src": "item:css-declarative",
+   "dst": "category:learn-the-map",
+   "type": "part_of"
+  },
+  {
+   "src": "item:js-timeline-tween",
+   "dst": "category:learn-the-map",
+   "type": "part_of"
+  },
+  {
+   "src": "item:ui-framework-motion",
+   "dst": "category:learn-the-map",
+   "type": "part_of"
+  },
+  {
+   "src": "item:vector-runtime",
+   "dst": "category:learn-the-map",
+   "type": "part_of"
+  },
+  {
+   "src": "item:3d-webgl-shader",
+   "dst": "category:learn-the-map",
+   "type": "part_of"
+  },
+  {
+   "src": "item:video-as-code",
+   "dst": "category:learn-the-map",
+   "type": "part_of"
+  },
+  {
+   "src": "item:ai-agent-authored",
+   "dst": "category:learn-the-map",
+   "type": "part_of"
+  },
+  {
+   "src": "item:adoption",
+   "dst": "category:how-we-rank",
+   "type": "part_of"
+  },
+  {
+   "src": "item:performance",
+   "dst": "category:how-we-rank",
+   "type": "part_of"
+  },
+  {
+   "src": "item:learning-curve",
+   "dst": "category:how-we-rank",
+   "type": "part_of"
+  },
+  {
+   "src": "item:license-openness",
+   "dst": "category:how-we-rank",
+   "type": "part_of"
+  },
+  {
+   "src": "item:agent-authorability",
+   "dst": "category:how-we-rank",
+   "type": "part_of"
+  },
+  {
+   "src": "item:maintenance-health",
+   "dst": "category:how-we-rank",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:gsap",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:motion",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:anime-js",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:lenis",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:react-spring",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:autoanimate",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:tween-js",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:motion-one",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:theatre-js",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:mo-js",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:popmotion",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:velocity-js",
+   "dst": "category:web-js-animation-timeline-tween-ui-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:sonner",
+   "dst": "category:css-utility-component-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:vaul",
+   "dst": "category:css-utility-component-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:magic-ui",
+   "dst": "category:css-utility-component-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:aceternity-ui",
+   "dst": "category:css-utility-component-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:tw-animate-css",
+   "dst": "category:css-utility-component-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:animate-css",
+   "dst": "category:css-utility-component-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:animations-dev",
+   "dst": "category:css-utility-component-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:tailwindcss-animate",
+   "dst": "category:css-utility-component-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:aos",
+   "dst": "category:css-utility-component-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:lottie-lottie-web",
+   "dst": "category:lottie-vector-runtimes-designer-authored-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:rive",
+   "dst": "category:lottie-vector-runtimes-designer-authored-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:dotlottie",
+   "dst": "category:lottie-vector-runtimes-designer-authored-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:lottie-react-native",
+   "dst": "category:lottie-vector-runtimes-designer-authored-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:lottiefiles",
+   "dst": "category:lottie-vector-runtimes-designer-authored-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:svgator",
+   "dst": "category:lottie-vector-runtimes-designer-authored-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:three-js",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:pixijs",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:react-three-fiber",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:babylon-js",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:drei",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:playcanvas",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:p5-js",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:spline",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:ogl",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:shadertoy",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:zdog",
+   "dst": "category:3d-webgl-shaders-immersive-generative-motion",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:heygen-hyperframes",
+   "dst": "category:video-as-code-a-composition-rendered-to-frames",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:remotion",
+   "dst": "category:video-as-code-a-composition-rendered-to-frames",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:motion-canvas",
+   "dst": "category:video-as-code-a-composition-rendered-to-frames",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:revideo",
+   "dst": "category:video-as-code-a-composition-rendered-to-frames",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:editly",
+   "dst": "category:video-as-code-a-composition-rendered-to-frames",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:heygen-hyperframes",
+   "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:manim-community",
+   "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:remotion-agent-skills",
+   "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:claude-design-artifacts",
+   "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:lottie-creator-mcp",
+   "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:css-animation-skill",
+   "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:claude-video-watch",
+   "dst": "category:ai-agent-authored-animation-a-prompt-or-reference-a-composit",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:runway",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:openai-sora-2",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:google-veo-3-1",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:kling-3-0",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:heygen",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:synthesia",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:pika",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:luma-dream-machine",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:jitter",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:adobe-after-effects",
+   "dst": "category:commercial-generative-video-proprietary-saas",
+   "type": "part_of"
+  },
+  {
+   "src": "repo:motion",
+   "dst": "repo:popmotion",
+   "type": "builds_on"
+  },
+  {
+   "src": "repo:react-three-fiber",
+   "dst": "repo:three-js",
+   "type": "builds_on"
+  },
+  {
+   "src": "repo:drei",
+   "dst": "repo:react-three-fiber",
+   "type": "builds_on"
+  },
+  {
+   "src": "repo:dotlottie",
+   "dst": "repo:lottie-lottie-web",
+   "type": "builds_on"
+  },
+  {
+   "src": "repo:lottie-react-native",
+   "dst": "repo:lottie-lottie-web",
+   "type": "builds_on"
+  },
+  {
+   "src": "repo:revideo",
+   "dst": "repo:motion-canvas",
+   "type": "builds_on"
+  },
+  {
+   "src": "repo:remotion-agent-skills",
+   "dst": "repo:remotion",
+   "type": "builds_on"
+  }
+ ],
+ "stats": {
+  "nodes": 81,
+  "edges": 80,
+  "node_types": {
+   "category": 9,
+   "item": 13,
+   "repo": 59
+  },
+  "edge_types": {
+   "part_of": 73,
+   "builds_on": 7
+  }
+ }
+}
