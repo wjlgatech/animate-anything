@@ -1,0 +1,35 @@
+name: render
+
+# Proves the /animate-anything examples actually render (incl. LaTeX/MathTex) — not just parse.
+on:
+  push:
+    paths: ["examples/**", "scripts/animate.py", ".github/workflows/render.yml"]
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    container:
+      image: manimcommunity/manim:stable   # ships manim + LaTeX + ffmpeg
+      options: --user root
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Style-gate every example against the 3b1b contract
+        run: |
+          for f in examples/*.py; do
+            echo "== lint $f =="; python3 scripts/animate.py lint "$f" --gate 80
+          done
+
+      - name: Render every example to MP4 (LaTeX included)
+        run: |
+          manim -ql --disable_caching examples/odd_squares.py OddSquares
+          manim -ql --disable_caching examples/geometric_series.py GeometricSeries
+          test -f media/videos/odd_squares/480p15/OddSquares.mp4
+          test -f media/videos/geometric_series/480p15/GeometricSeries.mp4
+          echo "✓ both examples rendered"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rendered-examples
+          path: media/videos/**/*.mp4
