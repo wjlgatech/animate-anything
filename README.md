@@ -5,7 +5,7 @@
 [![Awesome](https://awesome.re/badge-flat2.svg)](https://awesome.re)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Last Updated](https://img.shields.io/github/last-commit/wjlgatech/animate-anything?style=flat-square&label=last%20updated)](https://github.com/wjlgatech/animate-anything/commits/main)
-[![Stars](https://img.shields.io/github/stars/wjlgatech/animate-anything?style=flat-square)](https://github.com/wjlgatech/animate-anything/stargazers)
+[![Stars](https://img.shields.io/github/stars/wjlgatech/animate-anything?style=flat-square)](https://github.com/wjlgatech/animate-anything)
 [![Pages](https://img.shields.io/badge/interactive%20map-live-8b5cf6?style=flat-square)](https://wjlgatech.github.io/animate-anything/)
 
 **The comprehensive, ranked, living map of animation — from a CSS keyframe to an AI-authored launch video.**
