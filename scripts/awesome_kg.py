@@ -8,7 +8,8 @@ to build the graph, so it costs zero tokens and runs identically in CI. An optio
 What it understands (the de-facto awesome-list grammar):
   • GFM tables under ##/###/#### headings — the header row names the columns
     (Paper/Repo/Person/Lab/Benchmark/Title → node type; Authors/Speaker(s),
-    Venue/Event, Year, Citations, Stars, Code/Link(s), Description/Focus → fields)
+    Venue/Event, Year, Citations, Stars, Tier, License, Pricing, Code/Link(s),
+    Description/Focus → fields; a 🥇/🥈/🥉 tier also yields a numeric `rank`)
   • bold **Name** spans inside author/speaker cells → person mentions, resolved
     against the people tables by surname + first initial ("S. Hu" ≈ "Shengran Hu")
   • [text](url) markdown links anywhere in a cell
@@ -19,7 +20,7 @@ Emitted edges: authored_by · has_code · given_by · member_of · part_of · bu
 
 Usage:
   awesome_kg.py build README.md [--out graph.json] [--html graph.html]
-                                [--enrich overlay.json] [--title "T"]
+                                [--llms llms.txt] [--enrich overlay.json] [--title "T"]
   awesome_kg.py nim-enrich graph.json [--model z-ai/glm-5.1]   # needs NVIDIA_API_KEY
   awesome_kg.py schema                                          # print graph JSON shape
 """
@@ -59,6 +60,9 @@ _ROLES = {
     "links": "links",
     "description": "summary",
     "focus": "summary",
+    "tier": "tier",
+    "license": "license",
+    "pricing": "pricing",
     "research focus": "summary",
     "task": "summary",
     "previous roles": "roles",
@@ -280,6 +284,15 @@ def build(md: str, title: str, enrich: dict | None) -> dict:
                     fields["citations"] = _num(cell)
                 elif role == "stars":
                     fields["stars"] = _num(cell)
+                elif role == "tier":
+                    t = cell.strip()
+                    if t:
+                        fields["tier"] = t
+                        medal = re.search(r"[🥇🥈🥉]", t)
+                        if medal:
+                            fields["rank"] = {"🥇": 1, "🥈": 2, "🥉": 3}[medal.group()]
+                elif role in ("license", "pricing"):
+                    fields[role] = _plain(cell)
                 elif role in ("code", "links"):
                     fields["links"] = fields["links"] + [u for _, u in _LINK.findall(cell)]
 
@@ -338,21 +351,62 @@ def build(md: str, title: str, enrich: dict | None) -> dict:
         n.pop("_key", None)
 
     g = {"kind": "awesome", "subject": title, "nodes": list(nodes.values()), "edges": edges}
-    if enrich:
-        merge(g, enrich)
+    for overlay in (enrich if isinstance(enrich, list) else [enrich] if enrich else []):
+        merge(g, overlay)
     g["stats"] = _stats(g)
     return g
 
 
+def render_llms(g: dict) -> str:
+    """graph → llms.txt: a flat, token-cheap agent index compiled from the same source
+    as everything else (edit the README, never this file — single source of truth)."""
+    members: dict[str, list[dict]] = {}
+    by_id = {n["id"]: n for n in g["nodes"]}
+    for e in g["edges"]:
+        if e["type"] == "part_of":
+            members.setdefault(e["dst"], []).append(by_id[e["src"]])
+    out = [
+        f"# {g['subject']} — agent index (llms.txt)",
+        "",
+        "> GENERATED from README.md by scripts/awesome_kg.py — edit the README, not this file.",
+        "> One line per tool: tier name — use-case · license/pricing [link].",
+        "> Full typed graph: knowledge/graph.json",
+    ]
+    for cat in (n for n in g["nodes"] if n["type"] == "category"):
+        rows = [m for m in members.get(cat["id"], []) if m.get("links")]
+        if not rows:
+            continue
+        out += ["", f"## {cat['name']}"]
+        for m in rows:
+            terms = " ".join(filter(None, [m.get("tier", ""), m["name"]]))
+            if m.get("summary"):
+                terms += f" — {m['summary']}"
+            cost = m.get("license") or m.get("pricing")
+            if cost:
+                terms += f" · {cost}"
+            if m.get("agentic"):
+                terms += f" · agentic: {'+'.join(m['agentic'])}"
+            out.append(f"- {terms} [{m['links'][0]}]")
+    return "\n".join(out) + "\n"
+
+
 def merge(g: dict, overlay: dict) -> None:
-    """Merge an overlay {nodes:[],edges:[]} — hand-written or nim-enriched lineage."""
-    ids = {n["id"] for n in g["nodes"]}
+    """Merge an overlay {nodes:[],edges:[]} — hand-written lineage, nim-enriched edges,
+    or probed annotations. A node whose id already exists ANNOTATES it (fills fields it
+    lacks, never overwrites the README-derived truth); a new id is appended."""
+    by_id = {n["id"]: n for n in g["nodes"]}
     for n in overlay.get("nodes", []):
-        if n["id"] not in ids:
+        have = by_id.get(n["id"])
+        if have:
+            for k, v in n.items():
+                if k != "id" and v and not have.get(k):
+                    have[k] = v
+        else:
             n.setdefault("confidence", 0.6)
             n.setdefault("links", [])
             g["nodes"].append(n)
-            ids.add(n["id"])
+            by_id[n["id"]] = n
+    ids = set(by_id)
     have = {(e["src"], e["dst"], e["type"]) for e in g["edges"]}
     for e in overlay.get("edges", []):
         if e["src"] in ids and e["dst"] in ids and (e["src"], e["dst"], e["type"]) not in have:
@@ -434,7 +488,8 @@ def render_html(g: dict) -> str:
             "nodes": [
                 {k: n.get(k) for k in ("id", "type", "name", "summary", "authors", "venue",
                                         "year", "citations", "stars", "links", "confidence",
-                                        "category") if n.get(k) is not None}
+                                        "category", "tier", "rank", "license", "pricing",
+                                        "agentic") if n.get(k) is not None}
                 for n in g["nodes"]
             ],
             "edges": g["edges"],
@@ -739,7 +794,8 @@ def main() -> None:
             "kind": "awesome", "subject": "<title>",
             "nodes": [{"id": "paper:slug", "type": "paper|repo|person|lab|talk|benchmark|category|item",
                        "name": "", "summary": "", "links": [], "year": "", "citations": 0,
-                       "stars": 0, "confidence": 0.0}],
+                       "stars": 0, "tier": "🥇|🥈|🥉 (+qualifier)", "rank": 1,
+                       "license": "", "pricing": "", "confidence": 0.0}],
             "edges": [{"src": "", "dst": "",
                        "type": "authored_by|has_code|given_by|member_of|part_of|builds_on"}],
         }, indent=2))
@@ -755,28 +811,32 @@ def main() -> None:
     if cmd != "build":
         sys.exit(f"unknown command: {cmd}\n{__doc__}")
 
-    src, out, html_out, enrich_path, title = "", "graph.json", "", "", ""
+    src, out, html_out, llms_out, title = "", "graph.json", "", "", ""
+    enrich_paths: list[str] = []  # --enrich is repeatable: lineage overlay + probed agentic overlay
     it = iter(rest)
     for a in it:
         if a == "--out":
             out = next(it, out)
         elif a == "--html":
             html_out = next(it, "")
+        elif a == "--llms":
+            llms_out = next(it, "")
         elif a == "--enrich":
-            enrich_path = next(it, "")
+            ep = next(it, "")
+            if ep:
+                enrich_paths.append(ep)
         elif a == "--title":
             title = next(it, "")
         else:
             src = a
     if not src:
         sys.exit("usage: awesome_kg.py build README.md [--out g.json] [--html g.html] "
-                 "[--enrich overlay.json] [--title T]")
+                 "[--llms llms.txt] [--enrich overlay.json] [--title T]")
 
     md = open(src, encoding="utf-8", errors="ignore").read()
     title = title or (re.search(r"^#\s+(.+)$", md, re.M).group(1).strip() if re.search(r"^#\s+(.+)$", md, re.M) else os.path.basename(src))
     title = re.sub(r"[#*`]|:[a-z_]+:|[\U0001F000-\U0001FAFF☀-➿]", "", title).strip()
-    enrich = json.load(open(enrich_path)) if enrich_path else None
-    g = build(md, title, enrich)
+    g = build(md, title, [json.load(open(p)) for p in enrich_paths])
     json.dump(g, open(out, "w"), indent=1, ensure_ascii=False)
     print(f"graph: {out} — {g['stats']['nodes']} nodes, {g['stats']['edges']} edges")
     print(f"  node types: {g['stats']['node_types']}")
@@ -784,6 +844,9 @@ def main() -> None:
     if html_out:
         open(html_out, "w").write(render_html(g))
         print(f"view:  {html_out} (self-contained — works from file:// and GitHub Pages)")
+    if llms_out:
+        open(llms_out, "w").write(render_llms(g))
+        print(f"index: {llms_out} (flat agent index — compiled, never hand-edited)")
 
 
 if __name__ == "__main__":

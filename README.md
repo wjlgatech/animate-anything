@@ -31,9 +31,10 @@ This list **compiles**. Every tool below is a node in a typed graph (`part_of` a
 
 - **🗺️ [Explore the interactive map](https://wjlgatech.github.io/animate-anything/)** — force-layout graph with search + type filters + click-to-inspect (self-contained HTML; also open [`docs/index.html`](docs/index.html) locally).
 - **🧩 [`knowledge/graph.json`](knowledge/graph.json)** — the full machine-readable graph for your own agents, RAG pipelines, or analysis.
-- **🤖 [`llms.txt`](llms.txt)** — a flat, agent-friendly index of every tool + its one-line use-case + license.
+- **🤖 [`llms.txt`](llms.txt)** — a flat, agent-friendly index of every tool + its one-line use-case + license + observed agentic surface.
+- **🛠️ [`knowledge/agentic.json`](knowledge/agentic.json)** — which 🥇 repos *actually ship* agent tooling (AGENTS.md · CLAUDE.md · skills · Claude/Codex/Cursor plugins · MCP config · llms.txt), probed weekly from the repos themselves ([workflow](.github/workflows/agentic.yml)) — evidence, never reputation.
 
-**It stays alive automatically.** On every README merge, [a GitHub Action](.github/workflows/knowledge.yml) recompiles the graph + map; [a weekly freshness check](.github/workflows/freshness.yml) probes every link and opens an issue if any die.
+**It stays alive automatically.** On every README merge, [a GitHub Action](.github/workflows/knowledge.yml) recompiles the graph + map + `llms.txt` (all three are compiled — only the README is hand-edited); [a weekly freshness check](.github/workflows/freshness.yml) probes every link and opens an issue if any die; and [`make check`](Makefile) gates every PR (linter goldens + graph integrity).
 
 ---
 

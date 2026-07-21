@@ -6,7 +6,9 @@ themselves on merge.
 ## Add or re-rank a tool
 1. Find the right category table in `README.md`.
 2. Add one row: `[Name](repo-or-homepage)` · Stars · License · one-line *what-it-is + when-to-use* · Tier (🥇/🥈/🥉).
-3. Open a PR. CI recompiles `knowledge/graph.json` + `docs/index.html`.
+3. Open a PR. `make check` gates it (graph integrity + style-linter goldens); on merge, CI
+   recompiles `knowledge/graph.json` + `docs/index.html` + `llms.txt` — all three are generated,
+   only the README is hand-edited.
 
 ## Rules
 - **One row per tool.** No duplicates across categories — pick its primary home.
@@ -20,8 +22,8 @@ regeneration). Add an edge as `{"src": "repo:child", "dst": "repo:parent", "type
 
 ## Local preview
 ```bash
-python3 scripts/awesome_kg.py build README.md --out knowledge/graph.json --html docs/index.html \
-  --enrich knowledge/enrichments.json --title "Awesome Animation"
-python3 scripts/check_freshness.py README.md   # verify no dead links
+make build   # README → graph.json + docs/index.html + llms.txt
+make check   # what CI runs on your PR (needs: pip install pytest)
+make fresh   # verify no dead links
 open docs/index.html
 ```
