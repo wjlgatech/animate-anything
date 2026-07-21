@@ -1,0 +1,28 @@
+name: agentic
+
+# Weekly re-probe of the OBSERVED agentic surface (AGENTS.md, skills, plugins, MCP config)
+# of every 🥇 repo — evidence from the repos themselves, committed as knowledge/agentic.json.
+# A probe error fails the run (a repo is "not measured", never silently "surface-free").
+on:
+  schedule:
+    - cron: "0 7 * * 1"   # Mondays 07:00 UTC, after freshness
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe top repos + recompile graph/map/index
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: make agentic
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add knowledge/agentic.json knowledge/graph.json docs/index.html llms.txt
+          git diff --cached --quiet || git commit -m "chore: weekly agentic-surface probe [skip ci]"
+          git push
