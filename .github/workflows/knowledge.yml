@@ -22,13 +22,15 @@ jobs:
           python3 scripts/awesome_kg.py build README.md \
             --out knowledge/graph.json \
             --html docs/index.html \
+            --llms llms.txt \
             --enrich knowledge/enrichments.json \
+            --enrich knowledge/agentic.json \
             --title "Awesome Animation"
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add knowledge/graph.json docs/index.html
+          git add knowledge/graph.json docs/index.html llms.txt
           git diff --cached --quiet || git commit -m "chore: recompile knowledge graph from README [skip ci]"
           git push

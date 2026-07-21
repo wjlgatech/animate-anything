@@ -135,9 +135,13 @@
     "https://github.com/greensock/GSAP"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "Free (GSAP Standard License)",
    "stars": 26000,
    "summary": "The pro timeline engine — scroll, SVG, precise sequencing. Now 100% free incl. all plugins (2025). Reach for orchestrated, exact motion.",
-   "confidence": 0.97
+   "confidence": 0.97,
+   "agentic_probe": "github:greensock/GSAP"
   },
   {
    "id": "repo:motion",
@@ -147,9 +151,19 @@
     "https://github.com/motiondivision/motion"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT (core; Motion+ paid)",
    "stars": 33000,
    "summary": "Formerly Framer Motion — spring/layout/gesture animation for React & JS. The default for app UIs.",
-   "confidence": 0.98
+   "confidence": 0.98,
+   "agentic": [
+    "agents-dir",
+    "agents-md",
+    "claude-md",
+    "cursor-rules"
+   ],
+   "agentic_probe": "github:motiondivision/motion"
   },
   {
    "id": "repo:anime-js",
@@ -159,9 +173,13 @@
     "https://github.com/juliangarnier/anime"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 71000,
    "summary": "Lightweight, expressive timeline for DOM/SVG/JS objects (v4, 2025).",
-   "confidence": 1.0
+   "confidence": 1.0,
+   "agentic_probe": "github:juliangarnier/anime"
   },
   {
    "id": "repo:lenis",
@@ -171,9 +189,13 @@
     "https://github.com/darkroomengineering/lenis"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 14000,
    "summary": "Smooth-scroll foundation that scroll-driven motion is built on.",
-   "confidence": 0.94
+   "confidence": 0.94,
+   "agentic_probe": "github:darkroomengineering/lenis"
   },
   {
    "id": "repo:react-spring",
@@ -183,6 +205,9 @@
     "https://github.com/pmndrs/react-spring"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "MIT",
    "stars": 29000,
    "summary": "Spring-physics animation for React.",
    "confidence": 0.97
@@ -195,6 +220,9 @@
     "https://github.com/formkit/auto-animate"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "MIT",
    "stars": 14000,
    "summary": "One line → automatic add/remove/move transitions. Zero-config delight.",
    "confidence": 0.94
@@ -207,6 +235,9 @@
     "https://github.com/tweenjs/tween.js"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "MIT",
    "stars": 10000,
    "summary": "Minimal tweening primitive, often paired with Three.js.",
    "confidence": 0.93
@@ -219,6 +250,9 @@
     "https://github.com/motiondivision/motionone"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥉",
+   "rank": 3,
+   "license": "MIT",
    "stars": 3000,
    "summary": "Tiny (~2kb) WAAPI-based animator.",
    "confidence": 0.87
@@ -231,6 +265,9 @@
     "https://github.com/theatre-js/theatre"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥉",
+   "rank": 3,
+   "license": "Apache-2.0 / AGPL studio",
    "stars": 12000,
    "summary": "Visual sequence editor for JS & 3D.",
    "confidence": 0.93
@@ -243,6 +280,9 @@
     "https://github.com/mojs/mojs"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥉",
+   "rank": 3,
+   "license": "MIT",
    "stars": 19000,
    "summary": "Motion-graphics toolkit for the web.",
    "confidence": 0.96
@@ -255,6 +295,9 @@
     "https://github.com/Popmotion/popmotion"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥉 fading",
+   "rank": 3,
+   "license": "MIT",
    "stars": 20000,
    "summary": "Being absorbed into Motion — prefer Motion.",
    "confidence": 0.96
@@ -267,6 +310,9 @@
     "https://github.com/julianshapiro/velocity"
    ],
    "category": "🌊 Web / JS animation — timeline, tween & UI motion",
+   "tier": "🥉 dead",
+   "rank": 3,
+   "license": "MIT",
    "stars": 17000,
    "summary": "Historic jQuery-era animator, unmaintained since 2020.",
    "confidence": 0.95
@@ -286,9 +332,13 @@
     "https://github.com/emilkowalski/sonner"
    ],
    "category": "🎨 CSS / utility & component motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 13000,
    "summary": "Emil Kowalski's toast — the craft reference (13M+ weekly npm).",
-   "confidence": 0.94
+   "confidence": 0.94,
+   "agentic_probe": "github:emilkowalski/sonner"
   },
   {
    "id": "repo:vaul",
@@ -298,9 +348,13 @@
     "https://github.com/emilkowalski/vaul"
    ],
    "category": "🎨 CSS / utility & component motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 8,
    "summary": "Emil Kowalski's drawer — physics-y, accessible.",
-   "confidence": 0.6
+   "confidence": 0.6,
+   "agentic_probe": "github:emilkowalski/vaul"
   },
   {
    "id": "repo:magic-ui",
@@ -310,9 +364,17 @@
     "https://github.com/magicuidesign/magicui"
    ],
    "category": "🎨 CSS / utility & component motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT (+ Pro)",
    "stars": 21000,
    "summary": "Animated React/Tailwind components, shadcn-style registry.",
-   "confidence": 0.96
+   "confidence": 0.96,
+   "agentic": [
+    "agents-md",
+    "skills-dir"
+   ],
+   "agentic_probe": "github:magicuidesign/magicui"
   },
   {
    "id": "repo:aceternity-ui",
@@ -322,6 +384,9 @@
     "https://ui.aceternity.com"
    ],
    "category": "🎨 CSS / utility & component motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT free + Pro",
    "summary": "Copy-paste flashy animated sections.",
    "confidence": 0.6
   },
@@ -333,6 +398,9 @@
     "https://github.com/Wombosvideo/tw-animate-css"
    ],
    "category": "🎨 CSS / utility & component motion",
+   "tier": "🥈 rising",
+   "rank": 2,
+   "license": "MIT",
    "stars": 780,
    "summary": "Tailwind v4 animation utilities — the current shadcn default.",
    "confidence": 0.81
@@ -345,6 +413,9 @@
     "https://github.com/animate-css/animate.css"
    ],
    "category": "🎨 CSS / utility & component motion",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "Hippocratic 2.1 (ethical, not OSI)",
    "stars": 83000,
    "summary": "Drop-in CSS keyframe classes. Note the non-standard license.",
    "confidence": 1.0
@@ -357,6 +428,8 @@
     "https://animations.dev"
    ],
    "category": "🎨 CSS / utility & component motion",
+   "tier": "📚 resource",
+   "license": "Commercial course",
    "summary": "Emil Kowalski's animation course — the craft curriculum.",
    "confidence": 0.6
   },
@@ -368,6 +441,9 @@
     "https://github.com/jamiebuilds/tailwindcss-animate"
    ],
    "category": "🎨 CSS / utility & component motion",
+   "tier": "🥉",
+   "rank": 3,
+   "license": "MIT",
    "stars": 3000,
    "summary": "v3-era; superseded by tw-animate-css.",
    "confidence": 0.87
@@ -380,6 +456,9 @@
     "https://github.com/michalsnik/aos"
    ],
    "category": "🎨 CSS / utility & component motion",
+   "tier": "🥉 fading",
+   "rank": 3,
+   "license": "MIT",
    "stars": 28000,
    "summary": "Animate-on-scroll, low maintenance.",
    "confidence": 0.97
@@ -399,9 +478,13 @@
     "https://github.com/airbnb/lottie-web"
    ],
    "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 32000,
    "summary": "Play After-Effects vector animations as JSON on the web. The foundation (aging).",
-   "confidence": 0.98
+   "confidence": 0.98,
+   "agentic_probe": "github:airbnb/lottie-web"
   },
   {
    "id": "repo:rive",
@@ -411,9 +494,13 @@
     "https://github.com/rive-app/rive-runtime"
    ],
    "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT runtimes (editor SaaS)",
    "stars": 1000,
    "summary": "Interactive, state-machine vector animation — small, real-time, input-driven.",
-   "confidence": 0.82
+   "confidence": 0.82,
+   "agentic_probe": "github:rive-app/rive-runtime"
   },
   {
    "id": "repo:dotlottie",
@@ -423,9 +510,16 @@
     "https://github.com/LottieFiles/dotlottie-web"
    ],
    "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 800,
    "summary": "The modern Lottie player/format (compressed, themable).",
-   "confidence": 0.81
+   "confidence": 0.81,
+   "agentic": [
+    "skill-md"
+   ],
+   "agentic_probe": "github:LottieFiles/dotlottie-web"
   },
   {
    "id": "repo:lottie-react-native",
@@ -435,9 +529,13 @@
     "https://github.com/lottie-react-native/lottie-react-native"
    ],
    "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "Apache-2.0",
    "stars": 17000,
    "summary": "Lottie for React Native.",
-   "confidence": 0.95
+   "confidence": 0.95,
+   "agentic_probe": "github:lottie-react-native/lottie-react-native"
   },
   {
    "id": "repo:lottiefiles",
@@ -447,6 +545,9 @@
     "https://lottiefiles.com"
    ],
    "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "tier": "🥇 platform",
+   "rank": 1,
+   "license": "Proprietary SaaS (free tier)",
    "summary": "The vector-animation ecosystem — marketplace, tools, players, MCP.",
    "confidence": 0.6
   },
@@ -458,6 +559,9 @@
     "https://svgator.com"
    ],
    "category": "🪁 Lottie / vector runtimes — designer-authored motion",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "Proprietary SaaS (free tier)",
    "summary": "No-code SVG animation editor.",
    "confidence": 0.6
   },
@@ -476,9 +580,16 @@
     "https://github.com/mrdoob/three.js"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 114000,
    "summary": "The WebGL 3D standard.",
-   "confidence": 1.0
+   "confidence": 1.0,
+   "agentic": [
+    "llms-txt"
+   ],
+   "agentic_probe": "github:mrdoob/three.js"
   },
   {
    "id": "repo:pixijs",
@@ -488,9 +599,16 @@
     "https://github.com/pixijs/pixijs"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 48000,
    "summary": "Fast 2D WebGL renderer for effects & particles.",
-   "confidence": 1.0
+   "confidence": 1.0,
+   "agentic": [
+    "skills-dir"
+   ],
+   "agentic_probe": "github:pixijs/pixijs"
   },
   {
    "id": "repo:react-three-fiber",
@@ -500,9 +618,13 @@
     "https://github.com/pmndrs/react-three-fiber"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 31000,
    "summary": "Three.js as declarative React components.",
-   "confidence": 0.98
+   "confidence": 0.98,
+   "agentic_probe": "github:pmndrs/react-three-fiber"
   },
   {
    "id": "repo:babylon-js",
@@ -512,9 +634,13 @@
     "https://github.com/BabylonJS/Babylon.js"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "Apache-2.0",
    "stars": 26000,
    "summary": "Full-featured 3D engine (games, XR).",
-   "confidence": 0.97
+   "confidence": 0.97,
+   "agentic_probe": "github:BabylonJS/Babylon.js"
   },
   {
    "id": "repo:drei",
@@ -524,6 +650,9 @@
     "https://github.com/pmndrs/drei"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "MIT",
    "stars": 9,
    "summary": "R3F helpers — the batteries for react-three-fiber.",
    "confidence": 0.61
@@ -536,6 +665,9 @@
     "https://github.com/playcanvas/engine"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "MIT (editor freemium)",
    "stars": 16000,
    "summary": "3D engine with a cloud editor.",
    "confidence": 0.95
@@ -548,6 +680,9 @@
     "https://github.com/processing/p5.js"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "LGPL-2.1",
    "stars": 24000,
    "summary": "Creative-coding for generative/ambient motion.",
    "confidence": 0.97
@@ -560,6 +695,9 @@
     "https://spline.design"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥇 no-code",
+   "rank": 1,
+   "license": "Proprietary SaaS (free tier)",
    "summary": "No-code 3D design & animation, exportable to web.",
    "confidence": 0.6
   },
@@ -571,6 +709,9 @@
     "https://github.com/oframe/ogl"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥉",
+   "rank": 3,
+   "license": "Unlicense",
    "stars": 4,
    "summary": "Minimal WebGL when Three.js is too heavy.",
    "confidence": 0.57
@@ -583,6 +724,8 @@
     "https://www.shadertoy.com"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "📚 resource",
+   "license": "Platform (per-shader)",
    "summary": "The fragment-shader learning & sharing hub (not a dependency).",
    "confidence": 0.6
   },
@@ -594,6 +737,9 @@
     "https://github.com/metafizzy/zdog"
    ],
    "category": "3D / WebGL / shaders — immersive & generative motion",
+   "tier": "🥉 fading",
+   "rank": 3,
+   "license": "MIT",
    "stars": 10,
    "summary": "Pseudo-3D round vector illustrations (dormant).",
    "confidence": 0.61
@@ -613,9 +759,24 @@
     "https://github.com/heygen-com/hyperframes"
    ],
    "category": "🎞 Video-as-code — a composition rendered to frames",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "Apache-2.0 (no render fees)",
    "stars": 34000,
    "summary": "Agent-native: author HTML/CSS/GSAP, render MP4 locally (headless-Chrome+FFmpeg), deterministic. The center of \"video as code for agents.\"",
-   "confidence": 0.98
+   "confidence": 0.98,
+   "agentic": [
+    "agents-dir",
+    "agents-md",
+    "claude-md",
+    "claude-plugin",
+    "claude-skills",
+    "codex-plugin",
+    "cursor-plugin",
+    "skills-dir",
+    "skills-manifest"
+   ],
+   "agentic_probe": "github:heygen-com/hyperframes"
   },
   {
    "id": "repo:remotion",
@@ -625,9 +786,20 @@
     "https://github.com/remotion-dev/remotion"
    ],
    "category": "🎞 Video-as-code — a composition rendered to frames",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "Source-available (free ≤3 ppl; paid 4+)",
    "stars": 53000,
    "summary": "Make videos in React — data-driven, programmatic MP4. Note the tiered commercial license.",
-   "confidence": 1.0
+   "confidence": 1.0,
+   "agentic": [
+    "agents-dir",
+    "agents-md",
+    "claude-commands",
+    "claude-md",
+    "claude-skills"
+   ],
+   "agentic_probe": "github:remotion-dev/remotion"
   },
   {
    "id": "repo:motion-canvas",
@@ -637,6 +809,9 @@
     "https://github.com/motion-canvas/motion-canvas"
    ],
    "category": "🎞 Video-as-code — a composition rendered to frames",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "MIT core (org exploring GPL)",
    "stars": 19000,
    "summary": "Code-driven vector animation with a visual editor — great for explainers.",
    "confidence": 0.96
@@ -649,6 +824,9 @@
     "https://github.com/redotvideo/revideo"
    ],
    "category": "🎞 Video-as-code — a composition rendered to frames",
+   "tier": "🥈",
+   "rank": 2,
+   "license": "MIT",
    "stars": 3,
    "summary": "Programmatic video built on Motion Canvas, API-first.",
    "confidence": 0.56
@@ -661,6 +839,9 @@
     "https://github.com/mifi/editly"
    ],
    "category": "🎞 Video-as-code — a composition rendered to frames",
+   "tier": "🥉",
+   "rank": 3,
+   "license": "MIT",
    "stars": 5,
    "summary": "Declarative FFmpeg video editing from a spec.",
    "confidence": 0.58
@@ -680,9 +861,13 @@
     "https://github.com/ManimCommunity/manim"
    ],
    "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "MIT",
    "stars": 39000,
    "summary": "The most LLM-authorable animator — Python `Scene` classes, huge training footprint. Ideal for agent-generated explainers.",
-   "confidence": 0.99
+   "confidence": 0.99,
+   "agentic_probe": "github:ManimCommunity/manim"
   },
   {
    "id": "repo:remotion-agent-skills",
@@ -692,9 +877,20 @@
     "https://github.com/remotion-dev/remotion"
    ],
    "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "tier": "🥇",
+   "rank": 1,
+   "license": "Source-available",
    "stars": 53000,
    "summary": "Official Agent Skills (Jan 2026) for Claude Code/Cursor — agents author React video.",
-   "confidence": 1.0
+   "confidence": 1.0,
+   "agentic": [
+    "agents-dir",
+    "agents-md",
+    "claude-commands",
+    "claude-md",
+    "claude-skills"
+   ],
+   "agentic_probe": "github:remotion-dev/remotion"
   },
   {
    "id": "repo:claude-design-artifacts",
@@ -704,6 +900,9 @@
     "https://claude.ai"
    ],
    "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "tier": "🥈 product",
+   "rank": 2,
+   "license": "Proprietary product",
    "summary": "The mainstream path for an LLM to author self-contained animated HTML/CSS/JS.",
    "confidence": 0.6
   },
@@ -715,6 +914,8 @@
     "https://lottiefiles.com"
    ],
    "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "tier": "🌱 emerging",
+   "license": "Proprietary",
    "summary": "LottieFiles' MCP — the most production-credible agent path to vector animation.",
    "confidence": 0.6
   },
@@ -726,6 +927,8 @@
     "https://github.com/neonwatty/css-animation-skill"
    ],
    "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "tier": "🌱 emerging",
+   "license": "MIT",
    "summary": "A Claude Code skill that teaches an agent CSS-animation craft.",
    "confidence": 0.6
   },
@@ -737,6 +940,8 @@
     "https://github.com/bradautomates/claude-video"
    ],
    "category": "AI / agent-authored animation — a prompt or reference → a composition",
+   "tier": "🔗 adjacent",
+   "license": "MIT",
    "stars": 7,
    "summary": "Lets an agent watch a reference video (yt-dlp + FFmpeg + Whisper). Comprehension, not authoring — the \"study a reference\" half of the loop.",
    "confidence": 0.6
@@ -756,6 +961,9 @@
     "https://runwayml.com"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥇",
+   "rank": 1,
+   "pricing": "Free / $15 / $35 / $95 · API ~$0.05–0.40/s",
    "summary": "Production text/image→video suite (Gen-4).",
    "confidence": 0.6
   },
@@ -767,6 +975,9 @@
     "https://openai.com/sora"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥇",
+   "rank": 1,
+   "pricing": "ChatGPT Plus $20 / Pro $200",
    "summary": "Frontier-quality generative video.",
    "confidence": 0.6
   },
@@ -778,6 +989,9 @@
     "https://deepmind.google/models/veo"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥇",
+   "rank": 1,
+   "pricing": "API $0.15–0.75/s",
    "summary": "4K generation with lip-sync.",
    "confidence": 0.6
   },
@@ -789,6 +1003,9 @@
     "https://klingai.com"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥇",
+   "rank": 1,
+   "pricing": "from ~$6/mo",
    "summary": "Best price/quality generative video.",
    "confidence": 0.6
   },
@@ -800,6 +1017,9 @@
     "https://heygen.com"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥇",
+   "rank": 1,
+   "pricing": "Free / $29 / $99 / $149",
    "summary": "AI-avatar spokesperson video.",
    "confidence": 0.6
   },
@@ -811,6 +1031,9 @@
     "https://synthesia.io"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥇",
+   "rank": 1,
+   "pricing": "Free / $29 / $89 / Ent",
    "summary": "Enterprise avatar video.",
    "confidence": 0.6
   },
@@ -822,6 +1045,9 @@
     "https://pika.art"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥈",
+   "rank": 2,
+   "pricing": "from ~$8/mo",
    "summary": "Fast, playful generative video.",
    "confidence": 0.6
   },
@@ -833,6 +1059,9 @@
     "https://lumalabs.ai"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥈",
+   "rank": 2,
+   "pricing": "Free / ~$30 / ~$90",
    "summary": "Text/image→video.",
    "confidence": 0.6
   },
@@ -844,6 +1073,9 @@
     "https://jitter.video"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥈",
+   "rank": 2,
+   "pricing": "Free / ~$16/mo",
    "summary": "Motion-design tool (not AI-gen) — quick branded animation.",
    "confidence": 0.6
   },
@@ -855,6 +1087,9 @@
     "https://www.adobe.com/products/aftereffects.html"
    ],
    "category": "🎥 Commercial generative video (proprietary SaaS)",
+   "tier": "🥇",
+   "rank": 1,
+   "pricing": "$22.99/mo",
    "summary": "The professional motion-graphics incumbent.",
    "confidence": 0.6
   }

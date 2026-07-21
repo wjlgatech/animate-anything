@@ -1,0 +1,34 @@
+[
+  {
+    "id": "rc0001",
+    "delivery": "OpenSpace-methodology transfer: verification harness, compiled knowledge artifacts, agentic-surface extraction of top repos",
+    "objective": "apply OpenSpace methodologies/skills to improve animate-anything's knowledge + skills folds",
+    "created_at": "2026-07-21T05:20:05Z",
+    "key_results": [
+      {
+        "text": "verification finish line exists and is green",
+        "target": "make check + CI gate on every push/PR",
+        "score": 1.0,
+        "evidence": "anyagent goal --drive discovered 'make check' exit 0; 22/22 pytest; check.yml"
+      },
+      {
+        "text": "ranking reaches agents",
+        "target": "tier/license/pricing + agentic surface in graph.json and llms.txt",
+        "score": 0.95,
+        "evidence": "repo:gsap carries tier/rank/license; llms.txt compiled with agentic markers"
+      },
+      {
+        "text": "top-repo agentic tooling extracted with evidence",
+        "target": "18/18 gold repos probed",
+        "score": 1.0,
+        "evidence": "knowledge/agentic.json: 19 annotations, probe exit 0, evidence source per node"
+      },
+      {
+        "text": "managed by OpenSpace",
+        "target": "skill discovered by SkillRegistry",
+        "score": 0.8,
+        "evidence": "animate-anything__imp_36f970d9 registered from ~/.openspace/skills; copy not symlink (snapshot drift risk)"
+      }
+    ]
+  }
+]
