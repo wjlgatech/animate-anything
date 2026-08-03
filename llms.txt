@@ -52,7 +52,7 @@
 
 ## 🎞 Video-as-code — a composition rendered to frames
 - 🥇 HeyGen Hyperframes — Agent-native: author HTML/CSS/GSAP, render MP4 locally (headless-Chrome+FFmpeg), deterministic. The center of "video as code for agents." · Apache-2.0 (no render fees) · agentic: agents-dir+agents-md+claude-md+claude-plugin+claude-skills+codex-plugin+cursor-plugin+skills-dir+skills-manifest [https://github.com/heygen-com/hyperframes]
-- 🥇 Remotion — Make videos in React — data-driven, programmatic MP4. Note the tiered commercial license. · Source-available (free ≤3 ppl; paid 4+) · agentic: agents-dir+agents-md+claude-commands+claude-md+claude-skills [https://github.com/remotion-dev/remotion]
+- 🥇 Remotion — Make videos in React — data-driven, programmatic MP4. Note the tiered commercial license. · Source-available (free ≤3 ppl; paid 4+) · agentic: agents-dir+agents-md+claude-md+claude-skills [https://github.com/remotion-dev/remotion]
 - 🥈 Motion Canvas — Code-driven vector animation with a visual editor — great for explainers. · MIT core (org exploring GPL) [https://github.com/motion-canvas/motion-canvas]
 - 🥈 Revideo — Programmatic video built on Motion Canvas, API-first. · MIT [https://github.com/redotvideo/revideo]
 - 🥉 Editly — Declarative FFmpeg video editing from a spec. · MIT [https://github.com/mifi/editly]
@@ -60,7 +60,7 @@
 ## AI / agent-authored animation — a prompt or reference → a composition
 - 🥇 HeyGen Hyperframes — Agent-native: author HTML/CSS/GSAP, render MP4 locally (headless-Chrome+FFmpeg), deterministic. The center of "video as code for agents." · Apache-2.0 (no render fees) · agentic: agents-dir+agents-md+claude-md+claude-plugin+claude-skills+codex-plugin+cursor-plugin+skills-dir+skills-manifest [https://github.com/heygen-com/hyperframes]
 - 🥇 Manim (Community) — The most LLM-authorable animator — Python `Scene` classes, huge training footprint. Ideal for agent-generated explainers. · MIT [https://github.com/ManimCommunity/manim]
-- 🥇 Remotion Agent Skills — Official Agent Skills (Jan 2026) for Claude Code/Cursor — agents author React video. · Source-available · agentic: agents-dir+agents-md+claude-commands+claude-md+claude-skills [https://github.com/remotion-dev/remotion]
+- 🥇 Remotion Agent Skills — Official Agent Skills (Jan 2026) for Claude Code/Cursor — agents author React video. · Source-available · agentic: agents-dir+agents-md+claude-md+claude-skills [https://github.com/remotion-dev/remotion]
 - 🥈 product Claude Design / Artifacts — The mainstream path for an LLM to author self-contained animated HTML/CSS/JS. · Proprietary product [https://claude.ai]
 - 🌱 emerging Lottie Creator MCP — LottieFiles' MCP — the most production-credible agent path to vector animation. · Proprietary [https://lottiefiles.com]
 - 🌱 emerging css-animation-skill — A Claude Code skill that teaches an agent CSS-animation craft. · MIT [https://github.com/neonwatty/css-animation-skill]

@@ -110,7 +110,6 @@
    "agentic": [
     "agents-dir",
     "agents-md",
-    "claude-commands",
     "claude-md",
     "claude-skills"
    ],
@@ -121,7 +120,6 @@
    "agentic": [
     "agents-dir",
     "agents-md",
-    "claude-commands",
     "claude-md",
     "claude-skills"
    ],
