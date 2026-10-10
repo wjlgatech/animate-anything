@@ -156,6 +156,7 @@ Popularity is *one* input, never the whole verdict — a well-maintained MIT lib
 | [Lottie Creator MCP](https://lottiefiles.com) | 🌱 emerging | Proprietary | — | LottieFiles' MCP — the most production-credible agent path to vector animation. |
 | [css-animation-skill](https://github.com/neonwatty/css-animation-skill) | 🌱 emerging | MIT | small | A Claude Code skill that teaches an agent CSS-animation craft. |
 | [claude-video `/watch`](https://github.com/bradautomates/claude-video) | 🔗 adjacent | MIT | ~7.5k | Lets an agent **watch** a reference video (yt-dlp + FFmpeg + Whisper). *Comprehension, not authoring* — the "study a reference" half of the loop. |
+| [1human](https://reels.1human.tech) | 🥉 niche beta | MIT integration; per-creation rights; proprietary hosted service | — | Free motion-reference network for humans and their agents: browse credited studies and consult saved references for a real task. Reference discovery, not a universal renderer; [public integration](https://github.com/mdagnolops/1human-reels). |
 
 > **Not on this list, on purpose:** *"Fable 5 galleries"* — **Fable 5 is Anthropic's frontier LLM** (the authoring *engine*), not an animation product; there is no official gallery.
 
